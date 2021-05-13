@@ -24,7 +24,7 @@ public class BuyerTx {
     @GetMapping({"negotiate"})
     @ApiImplicitParams(value = {
             @ApiImplicitParam(name = "buyerPK", value = "买家公钥", required = true),
-            @ApiImplicitParam(name = "dataSetHash", value = "卖家公钥", required = true),
+            @ApiImplicitParam(name = "dataSetHash", value = "数据集哈希", required = true),
             @ApiImplicitParam(name = "price", value = "定价", required = true)
     })
     public ResponseBody negotiate(String buyerPK, String dataSetHash, String price) {

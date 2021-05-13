@@ -46,7 +46,7 @@ public class Swagger3Config {
                         .title("光启项目Springboot后台接口文档")
                         .build())
                 .select()
-                .apis(basePackage("com.enlightenment.demo.controller.buyer"))
+                .apis(basePackage("com.enlightenment.demo.controller.user"))
                 .paths(PathSelectors.any())
                 .build().groupName("user");
     }
