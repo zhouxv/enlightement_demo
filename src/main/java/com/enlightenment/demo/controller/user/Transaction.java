@@ -1,6 +1,7 @@
 package com.enlightenment.demo.controller.user;
 
-import com.enlightenment.demo.dto.ResponseBody;
+
+import com.enlightenment.demo.util.ResponseBody;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -22,7 +23,7 @@ public class Transaction {
     @PostMapping({"getOuterKey"})
     @ApiOperation(value = "获取共享密钥OuterKey", notes = "根据交易Id获取共享密钥")
     @ApiImplicitParams(value = {
-            @ApiImplicitParam(name = "txId", value = "交易Id", required = true)
+            @ApiImplicitParam(name = "txId", value = "交易Id", required = true, dataTypeClass = String.class)
     })
     public ResponseBody getOuterKey(String txId) {
         Map<String, String> map = new HashMap<>();

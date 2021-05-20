@@ -1,33 +1,38 @@
 package com.enlightenment.demo.dto;
 
+import com.enlightenment.demo.entity.Transaction;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.util.UUID;
+
 @Data
-@ApiModel(value = "Negotiate", description = "协商请求")
+@ApiModel(value = "NegotiateDTO", description = "合约信息")
 public class NegotiateDTO {
-    @ApiModelProperty(value = "买家公钥")
-    private String buyerPK;
+    @ApiModelProperty(value = "订单id")
+    private UUID txId;
 
-    @ApiModelProperty(value = "买家名称")
-    private String buyerName;
+    @ApiModelProperty(value = "卖家id")
+    private UUID sellerId;
 
-    @ApiModelProperty(value = "数据集名称")
-    private String dataSetName;
+    //买家信息
+    @ApiModelProperty(value = "买家id")
+    private UUID buyerId;
 
-    @ApiModelProperty(value = "数据集哈希")
-    private String dataSetHash;
+    // 数据集信息
+    @ApiModelProperty(value = "数据集id")
+    private UUID dataSetId;
 
-    @ApiModelProperty(value = "交易Id")
-    private String txId;
+    @ApiModelProperty(value = "数据集价格")
+    private Double price;
 
-    @ApiModelProperty(value = "数据集最低价格")
-    private double priceLow;
-
-    @ApiModelProperty(value = "数据集最高价格")
-    private double priceHigh;
-
-    @ApiModelProperty(value = "协商价格")
-    private double price;
+    public Transaction toTransaction() {
+        Transaction tx = new Transaction();
+        tx.setDatasetid(this.dataSetId.toString());
+        tx.setSellerid(this.sellerId.toString());
+        tx.setBuyerid(this.buyerId.toString());
+        tx.setPrice(this.price);
+        return tx;
+    }
 }

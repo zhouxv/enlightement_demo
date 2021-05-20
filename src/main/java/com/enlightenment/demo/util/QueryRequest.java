@@ -1,4 +1,4 @@
-package com.enlightenment.demo.dto;
+package com.enlightenment.demo.util;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

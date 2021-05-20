@@ -1,7 +1,10 @@
 package com.enlightenment.demo.controller.buyer;
 
 import com.enlightenment.demo.dto.DataSetCipherDTO;
-import com.enlightenment.demo.dto.ResponseBody;
+import com.enlightenment.demo.dto.NegotiateDTO;
+import com.enlightenment.demo.entity.Transaction;
+import com.enlightenment.demo.service.daoservice.ITransactionService;
+import com.enlightenment.demo.util.ResponseBody;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 
 @Slf4j
@@ -19,39 +23,36 @@ import java.util.Map;
 @Api(tags = "BuyerTx 买家交易")
 @RequestMapping({"buyerTx"})
 public class BuyerTx {
+    private final ITransactionService transactionService;
 
-    @ApiOperation(value = "买家开始协商", notes = "买家点击交易按钮，进入协商页面，点击提交，调用此接口")
-    @GetMapping({"negotiate"})
-    @ApiImplicitParams(value = {
-            @ApiImplicitParam(name = "buyerPK", value = "买家公钥", required = true),
-            @ApiImplicitParam(name = "dataSetHash", value = "数据集哈希", required = true),
-            @ApiImplicitParam(name = "price", value = "定价", required = true)
-    })
-    public ResponseBody negotiate(String buyerPK, String dataSetHash, String price) {
-        Map<String, String> map = new HashMap<>();
-        map.put("txId", "xxxxxxxx");
-
-        return ResponseBody.ok("开始协商", map);
+    public BuyerTx(ITransactionService transactionService) {
+        this.transactionService = transactionService;
     }
 
-//    @ApiOperation(value = "协商共享密钥outerKey", notes = "根据交易Id获取共享密钥密文包")
-//    @GetMapping({"outerKey"})
-//    @ApiImplicitParams(value = {
-//            @ApiImplicitParam(name = "cipher", value = "Enc(K(SB),Bpk)，使用买家公钥加密", required = true)
-//    })
-//    public ResponseBody getOuterKey(String txId) {
-//        Map<String,String> map=new HashMap<>();
-//        map.put("cipher","xxxxxxxx");
-//
-//        return ResponseBody.ok("共享密钥已发送", map);
-//    }
+    @ApiOperation(value = "买家开始协商", notes = "买家点击交易按钮，进入协商页面，点击提交，调用此接口")
+    @PostMapping({"negotiate"})
+    public ResponseBody negotiate(@RequestBody NegotiateDTO negotiateDTO) throws ExecutionException, InterruptedException {
+        log.info("开始协商");
+        // TODO: 2021/5/20  用户验证和数据集验证，不做验证也可，数据库有外键约束
+
+        Transaction tx = negotiateDTO.toTransaction();
+        if (!this.transactionService.createTransaction(tx)) {
+            log.info("订单生成失败");
+            return ResponseBody.fail("订单生成失败,协商中断");
+        }
+
+        log.info("订单生成成功");
+        Map<String, String> map = new HashMap<>();
+        map.put("txId", tx.getTxid());
+        return ResponseBody.ok("开始协商，订单生成成功", map);
+    }
 
     @GetMapping({"verifyOuterKey"})
     @ApiOperation(value = "确认outerKey", notes = "买家提交对称密钥的哈希和签名")
     @ApiImplicitParams(value = {
-            @ApiImplicitParam(name = "txId", value = "交易Id", required = true),
-            @ApiImplicitParam(name = "outerKeyHash", value = "outerKey的哈希", required = true),
-            @ApiImplicitParam(name = "outerKeySig", value = "买家对outerKey的签名", required = true)
+            @ApiImplicitParam(name = "txId", value = "交易Id", required = true, dataTypeClass = String.class),
+            @ApiImplicitParam(name = "outerKeyHash", value = "outerKey的哈希", required = true, dataTypeClass = String.class),
+            @ApiImplicitParam(name = "outerKeySig", value = "买家对outerKey的签名", required = true, dataTypeClass = String.class)
     })
     public ResponseBody verifyOuterKey(String txId, String outerKeyHash, String outerKeySig) {
 
@@ -81,8 +82,8 @@ public class BuyerTx {
     @GetMapping({"decision"})
     @ApiOperation(value = "买家决定交易是否继续进行", notes = "买家查看样本数据后，决定是否继续进行交易")
     @ApiImplicitParams(value = {
-            @ApiImplicitParam(name = "txId", value = "交易Id", required = true),
-            @ApiImplicitParam(name = "bool", value = "决定结果，true为继续交易，进入付款流程，false为终止交易", required = true)
+            @ApiImplicitParam(name = "txId", value = "交易Id", required = true, dataTypeClass = String.class),
+            @ApiImplicitParam(name = "bool", value = "决定结果，true为继续交易，进入付款流程，false为终止交易", required = true, dataTypeClass = Boolean.class)
     })
     public ResponseBody decision(String txId, boolean bool) {
         if (bool) return ResponseBody.ok("继续交易", null);

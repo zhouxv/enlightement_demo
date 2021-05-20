@@ -50,4 +50,5 @@ public class Swagger3Config {
                 .paths(PathSelectors.any())
                 .build().groupName("user");
     }
+
 }

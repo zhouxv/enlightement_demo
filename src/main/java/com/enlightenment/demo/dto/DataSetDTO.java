@@ -4,11 +4,13 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.util.UUID;
+
 @Data
 @ApiModel(value = "DataSetDTO", description = "声明数据集所有权的所有信息")
 public class DataSetDTO {
-    @ApiModelProperty(value = "卖家公钥")
-    private String sellerPK;
+    @ApiModelProperty(value = "卖家Id,UUID")
+    private UUID sellerId;
 
     @ApiModelProperty(value = "数据集名称")
     private String dataSetName;
