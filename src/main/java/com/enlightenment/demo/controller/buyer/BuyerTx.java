@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ExecutionException;
 
 
 @Slf4j
@@ -31,7 +30,7 @@ public class BuyerTx {
 
     @ApiOperation(value = "买家开始协商", notes = "买家点击交易按钮，进入协商页面，点击提交，调用此接口")
     @PostMapping({"negotiate"})
-    public ResponseBody negotiate(@RequestBody NegotiateDTO negotiateDTO) throws ExecutionException, InterruptedException {
+    public ResponseBody negotiate(@RequestBody NegotiateDTO negotiateDTO) {
         log.info("开始协商");
         // TODO: 2021/5/20  用户验证和数据集验证，不做验证也可，数据库有外键约束
 

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.io.File;
+import static com.enlightenment.demo.util.crypto.AESKeyGen.keyGen;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -16,13 +16,20 @@ class EnlightenmentDemoApplicationTests {
     @Autowired
     CryptoService service;
 
-    @Test
-    void contextLoads() throws Exception {
-        File file = new File("C:\\Users\\Administrator\\Desktop\\常用命令.txt");
-//        System.out.println(hashFile(file));
+    public static void main(String[] args) {
+        try {
+            for (byte b : keyGen()) {
+                System.out.println(b);
+            }
+        } catch (Exception e) {
+            System.out.println(e.fillInStackTrace());
+        }
+
     }
 
-
+    @Test
+    void contextLoads() throws Exception {
+    }
 
 
 }

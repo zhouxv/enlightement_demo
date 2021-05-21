@@ -1,5 +1,6 @@
 package com.enlightenment.demo.controller.buyer;
 
+import com.enlightenment.demo.dto.ShopDetailedDTO;
 import com.enlightenment.demo.entity.DataSet;
 import com.enlightenment.demo.service.daoservice.IDataSetService;
 import com.enlightenment.demo.util.QueryRequest;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+
+import static com.enlightenment.demo.dto.ShopDTO.dataSetListToShopDTOList;
 
 
 @Slf4j
@@ -29,7 +32,7 @@ public class ShopController {
     @ApiOperation(value = "商城浏览", notes = "获取所有数据集基本信息")
     public ResponseBody getAll(QueryRequest request) {
         List<DataSet> dataSetList = this.dataSetService.findAllDataSet();
-        return ResponseBody.ok("全部商品查询成功，无分页", dataSetList);
+        return ResponseBody.ok("全部商品查询成功，无分页", dataSetListToShopDTOList(dataSetList));
     }
 
     /**
@@ -44,7 +47,7 @@ public class ShopController {
         DataSet dataSet = this.dataSetService.getById(dataSetId);
         if (dataSet != null) {
             log.info("查询成功");
-            return ResponseBody.ok("商品详情查询成功", dataSet);
+            return ResponseBody.ok("商品详情查询成功", new ShopDetailedDTO(dataSet));
         }
         log.info("查询不到指定id的数据集");
         return ResponseBody.fail("查询不到指定id的数据集");
