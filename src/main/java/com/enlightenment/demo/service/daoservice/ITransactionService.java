@@ -9,7 +9,6 @@ import java.util.List;
  * Service接口
  *
  * @author zhouxv@gmail.com
- * @date 2021-05-19 11:22:11
  */
 public interface ITransactionService extends IService<Transaction> {
 
@@ -37,30 +36,30 @@ public interface ITransactionService extends IService<Transaction> {
     /**
      * 根据主键Id，36位UUID查询列表
      *
-     * @param orderId String
+     * @param txId String
      * @return Transaction
      */
-    Transaction findTransactionById(String orderId);
+    Transaction findTransactionById(String txId);
 
 
     /**
      * 新增
      *
-     * @param order order
+     * @param tx Transaction
      */
-    Boolean createTransaction(Transaction order);
+    Boolean createTransaction(Transaction tx);
 
     /**
      * 修改
      *
-     * @param order order
+     * @param tx Transaction
      */
-    Boolean updateTransactionById(Transaction order);
+    Boolean updateTransactionById(Transaction tx);
 
     /**
      * 删除
      *
-     * @param orderId String
+     * @param txId String
      */
-    Boolean deleteTransactionById(String orderId);
+    Boolean deleteTransactionById(String txId);
 }

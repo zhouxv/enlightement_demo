@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static com.enlightenment.demo.util.crypto.AESKeyGen.keyGen;
+import java.io.File;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -17,18 +17,12 @@ class EnlightenmentDemoApplicationTests {
     CryptoService service;
 
     public static void main(String[] args) {
-        try {
-            for (byte b : keyGen()) {
-                System.out.println(b);
-            }
-        } catch (Exception e) {
-            System.out.println(e.fillInStackTrace());
-        }
-
+        File file = new File("E:\\水星系统归档\\数据确权\\原型实现v2\\后端设计\\接口流程概述.xlsx");
+        System.out.println(file.exists());
     }
 
     @Test
-    void contextLoads() throws Exception {
+    void contextLoads() {
     }
 
 

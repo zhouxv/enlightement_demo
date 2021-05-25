@@ -1,8 +1,11 @@
 package com.enlightenment.demo.controller.seller;
 
 import com.enlightenment.demo.dto.DataSetCipherDTO;
+import com.enlightenment.demo.dto.K2DTO;
+import com.enlightenment.demo.dto.OuterKeyDTO;
 import com.enlightenment.demo.entity.Transaction;
 import com.enlightenment.demo.service.daoservice.ITransactionService;
+import com.enlightenment.demo.service.otherservice.FileService;
 import com.enlightenment.demo.util.ResponseBody;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -23,9 +26,11 @@ import java.util.UUID;
 public class SellerTx {
 
     private final ITransactionService transactionService;
+    private final FileService fileService;
 
-    public SellerTx(ITransactionService transactionService) {
+    public SellerTx(ITransactionService transactionService, FileService fileService) {
         this.transactionService = transactionService;
+        this.fileService = fileService;
     }
 
     @PostMapping({"getAllTX"})
@@ -69,16 +74,20 @@ public class SellerTx {
         }
     }
 
-    @GetMapping({"verifyOuterKey"})
-    @ApiOperation(value = "确认outerKey", notes = "卖家提交对称密钥的哈希和签名")
+    @GetMapping({"uploadOuterKey"})
+    @ApiOperation(value = "上传OuterKey", notes = "卖家提交对称密钥，其哈希和签名")
     @ApiImplicitParams(value = {
-            @ApiImplicitParam(name = "txId", value = "交易Id", required = true, dataTypeClass = String.class),
-            @ApiImplicitParam(name = "outerKeyHash", value = "outerKey的哈希", required = true, dataTypeClass = String.class),
-            @ApiImplicitParam(name = "outerKeySig", value = "卖家对outerKey的签名", required = true, dataTypeClass = String.class)
+            @ApiImplicitParam(name = "outerKeyDTO", value = "outerKeyDTO", required = true, dataTypeClass = OuterKeyDTO.class)
     })
-    public ResponseBody verifyOuterKey(String txId, String outerKeyHash, String outerKeySig) {
-
-        return ResponseBody.ok("卖家outerKEy确认完成", null);
+    public ResponseBody verifyOuterKey(@RequestBody OuterKeyDTO outerKeyDTO) {
+        Transaction tx = outerKeyDTO.toSellerTransaction();
+        // TODO: 2021/5/25 卖家签名验证
+        if (this.transactionService.updateTransactionById(tx)) {
+            log.info("卖家上传OuterKey完成");
+            return ResponseBody.ok("卖家上传OuterKey完成");
+        }
+        log.info("卖家上传OuterKey失败");
+        return ResponseBody.fail("卖家上传OuterKey失败");
     }
 
     @PostMapping({"uploadDataSetCipher"})
@@ -87,15 +96,32 @@ public class SellerTx {
             @ApiImplicitParam(name = "dataSetCipher", value = "上传的数据集加密包", required = true, dataTypeClass = MultipartFile.class),
             @ApiImplicitParam(name = "dataSetCipherDTO", value = "上传的数据集加密包证据", required = true, dataTypeClass = DataSetCipherDTO.class)
     })
-    public ResponseBody uploadDataSetCipher(@RequestPart MultipartFile dataSetCipher, @RequestPart DataSetCipherDTO dataSetCipherDTO) {
+    public ResponseBody uploadDataSetCipher(@RequestPart MultipartFile dataSetCipher, @RequestPart DataSetCipherDTO dataSetCipherDTO) throws Exception {
+        if (!this.fileService.uploadDataSetCipher(dataSetCipher, dataSetCipherDTO.getDataSetCipherHash())) {
+            log.info("数据集密文包存储失败，上传密文包失败");
+            return ResponseBody.fail("数据集密文包存储失败，上传密文包失败");
+        }
 
-        return ResponseBody.ok("数据集密文包发送完成", null);
+        log.info("数据集密文包存储成功");
+        Transaction tx = dataSetCipherDTO.toSellerTransaction();
+        if (this.transactionService.updateTransactionById(tx)) {
+            log.info("卖家密文包完成");
+            return ResponseBody.ok("卖家密文包完成");
+        }
+
+        return ResponseBody.fail("卖家密文包未完成");
     }
 
     @PostMapping({"addK2"})
     @ApiOperation(value = "上传K2", notes = "买家付款后卖家上传K2")
-    public ResponseBody addK2(@RequestBody String K2) {
-        return ResponseBody.ok("K2传递成功", null);
+    public ResponseBody addK2(@RequestParam K2DTO k2DTO) {
+        Transaction tx = k2DTO.toTransaction();
+        if (this.transactionService.updateTransactionById(tx)) {
+            log.info("卖家K2上传完成，订单状态更新成功");
+            return ResponseBody.ok("卖家K2上传完成");
+        }
+        log.info("卖家K2上传失败，订单状态更新失败");
+        return ResponseBody.ok("卖家K2上传失败");
     }
 
 }

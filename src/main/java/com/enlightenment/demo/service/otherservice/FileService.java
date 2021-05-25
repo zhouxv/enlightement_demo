@@ -11,30 +11,28 @@ public interface FileService {
 
     /**
      * 判断文件是否存在,存在就删除,建一个新文件
-     *
-     * @param file
-     * @throws Exception
      */
     void fileEDC(File file) throws Exception;
 
     /**
      * 保存样本文件,文件名是文件的哈希值
-     *
-     * @param file
-     * @param fileName
-     * @return
-     * @throws Exception
      */
     Boolean uploadSampleData(MultipartFile file, String fileName) throws Exception;
 
     /**
+     * 保存样本文件,文件名是文件的哈希值
+     */
+    File getSampleFile(String fileName);
+
+    /**
      * 保存文件,不规定文件名称
-     *
-     * @param file
-     * @return
-     * @throws Exception
      */
     Boolean uploadDataSetCipher(MultipartFile file, String fileName) throws Exception;
+
+    /**
+     * 保存样本文件,文件名是文件的哈希值
+     */
+    File getDataCipherFile(String fileName);
 
     String suffixOfFile(String fileName);
 }

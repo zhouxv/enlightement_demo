@@ -46,6 +46,32 @@ public class FileServiceImp implements FileService {
         }
     }
 
+    @Override
+    public File getSampleFile(String fileName) {
+        String rootPath = ClassUtils.getDefaultClassLoader().getResource("").getPath() + "uploadFile/sampleDataSet";
+        File rootFile = new File(rootPath);
+
+        File[] files = rootFile.listFiles();
+        for (File file : files) {
+            if (file.getName() == fileName) return file;
+        }
+
+        return null;
+    }
+
+    @Override
+    public File getDataCipherFile(String fileName) {
+        String rootPath = ClassUtils.getDefaultClassLoader().getResource("").getPath() + "uploadFile/dataSetCipher";
+        File rootFile = new File(rootPath);
+
+        File[] files = rootFile.listFiles();
+        for (File file : files) {
+            if (file.getName() == fileName) return file;
+        }
+
+        return null;
+    }
+
     // 上传的文件必须有后缀名,否则改方法接收不到
     @Override
     public Boolean uploadSampleData(MultipartFile file, String fileName) throws Exception {

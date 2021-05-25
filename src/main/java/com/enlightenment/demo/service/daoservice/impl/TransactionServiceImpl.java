@@ -16,7 +16,6 @@ import java.util.List;
  * Service实现
  *
  * @author zhouxv@gmail.com
- * @date 2021-05-19 11:22:11
  */
 @Service
 @RequiredArgsConstructor
@@ -42,26 +41,26 @@ public class TransactionServiceImpl extends ServiceImpl<TransactionMapper, Trans
     }
 
     @Override
-    public Transaction findTransactionById(String orderId) {
-        return this.getById(orderId);
+    public Transaction findTransactionById(String txId) {
+        return this.getById(txId);
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public Boolean createTransaction(Transaction order) {
-        order.setStatus(1);
-        return this.save(order);
+    public Boolean createTransaction(Transaction tx) {
+        tx.setStatus(1);
+        return this.save(tx);
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public Boolean updateTransactionById(Transaction order) {
-        return this.updateById(order);
+    public Boolean updateTransactionById(Transaction tx) {
+        return this.updateById(tx);
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public Boolean deleteTransactionById(String orderId) {
-        return this.removeById(orderId);
+    public Boolean deleteTransactionById(String txId) {
+        return this.removeById(txId);
     }
 }

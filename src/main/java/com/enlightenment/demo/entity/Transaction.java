@@ -102,12 +102,22 @@ public class Transaction {
     private String selleroutkeydigest;
 
     /**
+     * OuterKey
+     */
+    @TableField("outerKey")
+    private String outerkey;
+
+    /**
      * 卖家-OuterKey-签名
      */
     @TableField("sellerOutKeySig")
     private String selleroutkeysig;
 
     public Transaction() {
+    }
+
+    public Transaction(String txid) {
+        this.txid = txid;
     }
 
     public Transaction(String txid, Integer status) {
