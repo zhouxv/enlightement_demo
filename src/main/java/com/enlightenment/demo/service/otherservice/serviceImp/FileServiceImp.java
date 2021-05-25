@@ -53,7 +53,7 @@ public class FileServiceImp implements FileService {
 
         File[] files = rootFile.listFiles();
         for (File file : files) {
-            if (file.getName() == fileName) return file;
+            if (prefixOfFile(file.getName()).equals(fileName)) return file;
         }
 
         return null;
@@ -66,9 +66,9 @@ public class FileServiceImp implements FileService {
 
         File[] files = rootFile.listFiles();
         for (File file : files) {
-            if (file.getName() == fileName) return file;
-        }
 
+            if (prefixOfFile(file.getName()).equals(fileName)) return file;
+        }
         return null;
     }
 
@@ -131,6 +131,16 @@ public class FileServiceImp implements FileService {
             return "";
         } else {
             return fileName.substring(i);
+        }
+    }
+
+    @Override
+    public String prefixOfFile(String fileName) {
+        int i = fileName.lastIndexOf(".");
+        if (i == -1) {
+            return fileName;
+        } else {
+            return fileName.substring(0, i);
         }
     }
 }

@@ -12,5 +12,4 @@ public class EnlightenmentDemoApplication {
     public static void main(String[] args) {
         SpringApplication.run(EnlightenmentDemoApplication.class, args);
     }
-
 }

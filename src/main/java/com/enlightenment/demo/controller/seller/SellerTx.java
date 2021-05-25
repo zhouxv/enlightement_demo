@@ -74,7 +74,7 @@ public class SellerTx {
         }
     }
 
-    @GetMapping({"uploadOuterKey"})
+    @PostMapping({"uploadOuterKey"})
     @ApiOperation(value = "上传OuterKey", notes = "卖家提交对称密钥，其哈希和签名")
     @ApiImplicitParams(value = {
             @ApiImplicitParam(name = "outerKeyDTO", value = "outerKeyDTO", required = true, dataTypeClass = OuterKeyDTO.class)
@@ -97,14 +97,20 @@ public class SellerTx {
             @ApiImplicitParam(name = "dataSetCipherDTO", value = "上传的数据集加密包证据", required = true, dataTypeClass = DataSetCipherDTO.class)
     })
     public ResponseBody uploadDataSetCipher(@RequestPart MultipartFile dataSetCipher, @RequestPart DataSetCipherDTO dataSetCipherDTO) throws Exception {
+        Transaction tx = this.transactionService.findTransactionById(dataSetCipherDTO.getTxId().toString());
+        if (tx == null || tx.getStatus() != 6) {
+            log.info("非法操作，订单状态异常");
+            return ResponseBody.fail("非法操作，订单状态异常");
+        }
+
         if (!this.fileService.uploadDataSetCipher(dataSetCipher, dataSetCipherDTO.getDataSetCipherHash())) {
             log.info("数据集密文包存储失败，上传密文包失败");
             return ResponseBody.fail("数据集密文包存储失败，上传密文包失败");
         }
 
         log.info("数据集密文包存储成功");
-        Transaction tx = dataSetCipherDTO.toSellerTransaction();
-        if (this.transactionService.updateTransactionById(tx)) {
+        Transaction transaction = dataSetCipherDTO.toSellerTransaction();
+        if (this.transactionService.updateTransactionById(transaction)) {
             log.info("卖家密文包完成");
             return ResponseBody.ok("卖家密文包完成");
         }
@@ -114,9 +120,16 @@ public class SellerTx {
 
     @PostMapping({"addK2"})
     @ApiOperation(value = "上传K2", notes = "买家付款后卖家上传K2")
-    public ResponseBody addK2(@RequestParam K2DTO k2DTO) {
-        Transaction tx = k2DTO.toTransaction();
-        if (this.transactionService.updateTransactionById(tx)) {
+    public ResponseBody addK2(@RequestBody K2DTO k2DTO) {
+        Transaction tx = this.transactionService.findTransactionById(k2DTO.getTxId().toString());
+
+        if (tx == null || tx.getStatus() != 11) {
+            log.info("非法操作，订单状态异常");
+            return ResponseBody.fail("非法操作，订单状态异常");
+        }
+
+        Transaction transaction = k2DTO.toTransaction();
+        if (this.transactionService.updateTransactionById(transaction)) {
             log.info("卖家K2上传完成，订单状态更新成功");
             return ResponseBody.ok("卖家K2上传完成");
         }

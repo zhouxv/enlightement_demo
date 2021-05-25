@@ -64,14 +64,10 @@ public class BuyerTx {
     })
     public ResponseBody getOuterKey(@RequestParam UUID txId) {
         Transaction tx = this.transactionService.findTransactionById(txId.toString());
-        if (tx == null) {
-            log.info("检索不到对应的订单");
-            return ResponseBody.fail("检索不到对应的订单");
-        }
 
-        if (tx.getOuterkey() == null) {
-            log.info("检索不到对应的outerKey");
-            return ResponseBody.fail("检索不到对应的outerKey");
+        if (tx == null || tx.getStatus() != 2) {
+            log.info("非法操作，订单状态异常");
+            return ResponseBody.fail("非法操作，订单状态异常");
         }
 
         Transaction transaction = new Transaction(txId.toString(), 5);
@@ -88,15 +84,22 @@ public class BuyerTx {
         return ResponseBody.ok("outerKey检索成功", map);
     }
 
-    @GetMapping({"verifyOuterKey"})
+    @PostMapping({"verifyOuterKey"})
     @ApiOperation(value = "确认outerKey", notes = "买家提交对称密钥的哈希和签名")
     @ApiImplicitParams(value = {
             @ApiImplicitParam(name = "outerKeyDTO", value = "outerKeyDTO", required = true, dataTypeClass = OuterKeyDTO.class)
     })
     public ResponseBody verifyOuterKey(@RequestBody OuterKeyDTO outerKeyDTO) {
-        Transaction tx = outerKeyDTO.toBuyerTransaction();
+        Transaction tx = this.transactionService.findTransactionById(outerKeyDTO.getTxId().toString());
+        if (tx == null || tx.getStatus() != 5) {
+            log.info("非法操作，订单状态异常");
+            return ResponseBody.fail("非法操作，订单状态异常");
+        }
+
+        Transaction transaction = outerKeyDTO.toBuyerTransaction();
+
         // TODO: 2021/5/25 买家签名验证
-        if (this.transactionService.updateTransactionById(tx)) {
+        if (this.transactionService.updateTransactionById(transaction)) {
             log.info("买家验证OuterKey完成");
             return ResponseBody.ok("买家验证OuterKey完成");
         }
@@ -105,54 +108,43 @@ public class BuyerTx {
         return ResponseBody.fail("买家验证OuterKey失败");
     }
 
-    @PostMapping({"downloadDataSetCipher"})
+    @GetMapping({"downloadDataSetCipher"})
     @ApiOperation(value = "下载数据集密文包", notes = "买家下载数据集的密文包")
-    public ResponseBody downloadDataSetCipher(HttpServletResponse response, @RequestParam UUID txId) {
+    public void downloadDataSetCipher(HttpServletResponse response, @RequestParam UUID txId) {
         Transaction tx = this.transactionService.findTransactionById(txId.toString());
-        if (tx == null) {
-            log.info("检索不到对应的订单");
-            return ResponseBody.fail("检索不到对应的订单");
-        }
-        if (tx.getStatus() < 7) {
-            log.info("非法操作，订单状态错误");
-            return ResponseBody.fail("非法操作，订单状态错误");
-        }
 
-        this.download(tx.getSellerdatasetcipherdigest(), 1, response);
-        return ResponseBody.ok("文件传输完成");
+        if (!((tx == null) || (tx.getStatus() < 7))) {
+            this.download(tx.getSellerdatasetcipherdigest(), 1, response);
+        } else log.info("非法操作，订单状态错误");
+
     }
 
     @PostMapping({"verifyDataSetCipher"})
     @ApiOperation(value = "买家确认数据集密文", notes = "买家传递收到的密文包的哈希和签名")
     public ResponseBody verifyDataSetCipher(@RequestBody DataSetCipherDTO dataSetCipherDTO) {
-        Transaction tx = dataSetCipherDTO.toBuyerTransaction();
-        if (this.transactionService.updateTransactionById(tx)) {
+        Transaction tx = this.transactionService.findTransactionById(dataSetCipherDTO.getTxId().toString());
+        if (tx == null || tx.getStatus() != 7) {
+            log.info("非法操作，订单状态异常");
+            return ResponseBody.fail("非法操作，订单状态异常");
+        }
+
+        Transaction transaction = dataSetCipherDTO.toBuyerTransaction();
+        if (this.transactionService.updateTransactionById(transaction)) {
             log.info("买家密文包完成");
             return ResponseBody.ok("买家密文包完成");
         }
 
-        return ResponseBody.fail("买家密文包完成");
+        return ResponseBody.fail("买家密文包失败");
     }
 
-    @PostMapping({"downloadSample"})
+    @GetMapping({"downloadSample"})
     @ApiOperation(value = "下载sample数据集", notes = "买家下载sample数据集")
-    public ResponseBody downloadSampleDataSetup(HttpServletResponse response, @RequestParam String txId) {
-        Transaction tx = this.transactionService.findTransactionById(txId);
-
-        if (tx == null) {
-            log.info("检索不到对应的订单");
-            return ResponseBody.fail("检索不到对应的订单");
-        }
-
-        if (tx.getStatus() < 7) {
-            log.info("非法操作，订单状态错误");
-            return ResponseBody.fail("非法操作，订单状态错误");
-        }
-
-        DataSet dataSet = this.dataSetService.findDataSetById(tx.getDatasetid());
-        this.download(dataSet.getSamplehash(), 0, response);
-
-        return ResponseBody.ok("文件传输完成");
+    public void downloadSampleDataSetup(HttpServletResponse response, @RequestParam UUID txId) {
+        Transaction tx = this.transactionService.findTransactionById(txId.toString());
+        if (!((tx == null) || (tx.getStatus() < 7))) {
+            DataSet dataSet = this.dataSetService.findDataSetById(tx.getDatasetid());
+            this.download(dataSet.getSamplehash(), 0, response);
+        } else log.info("非法操作，订单状态错误");
     }
 
     @GetMapping({"decision"})
@@ -162,25 +154,31 @@ public class BuyerTx {
             @ApiImplicitParam(name = "bool", value = "决定结果，true为继续交易，进入付款流程，false为终止交易", required = true, dataTypeClass = Boolean.class)
     })
     public ResponseBody decision(@RequestParam UUID txId, boolean bool) {
+        Transaction tx = this.transactionService.findTransactionById(txId.toString());
+        if (tx == null || tx.getStatus() != 8) {
+            log.info("非法操作，订单状态错误");
+            return ResponseBody.fail("非法操作，订单状态错误");
+        }
+
         if (bool) {
             log.info("买家决定继续交易");
-            Transaction tx = new Transaction(txId.toString(), 9);
-            if (this.transactionService.updateTransactionById(tx)) {
+            Transaction transaction = new Transaction(txId.toString(), 9);
+            if (this.transactionService.updateTransactionById(transaction)) {
                 log.info("订单状态更新成功");
                 return ResponseBody.ok("继续交易");
             }
             log.info("订单状态更新失败");
             return ResponseBody.fail("继续交易的订单状态更新失败");
+        } else {
+            log.info("买家决定终止交易");
+            Transaction transaction = new Transaction(txId.toString(), 10);
+            if (this.transactionService.updateTransactionById(transaction)) {
+                log.info("订单状态更新成功");
+                return ResponseBody.ok("终止交易");
+            }
+            log.info("订单状态更新失败");
+            return ResponseBody.fail("终止交易的订单状态更新失败");
         }
-
-        log.info("买家决定终止交易");
-        Transaction tx = new Transaction(txId.toString(), 10);
-        if (this.transactionService.updateTransactionById(tx)) {
-            log.info("订单状态更新成功");
-            return ResponseBody.ok("终止交易");
-        }
-        log.info("订单状态更新失败");
-        return ResponseBody.fail("终止交易的订单状态更新失败");
     }
 
     @GetMapping({"pay"})
@@ -189,9 +187,15 @@ public class BuyerTx {
             @ApiImplicitParam(name = "txId", value = "交易Id", required = true, dataTypeClass = UUID.class)
     })
     public ResponseBody pay(@RequestParam UUID txId) {
+        Transaction tx = this.transactionService.findTransactionById(txId.toString());
+        if (tx == null || tx.getStatus() != 10) {
+            log.info("非法操作，订单状态错误");
+            return ResponseBody.fail("非法操作，订单状态错误");
+        }
+
         log.info("付款完成");
-        Transaction tx = new Transaction(txId.toString(), 11);
-        if (this.transactionService.updateTransactionById(tx)) {
+        Transaction transaction = new Transaction(txId.toString(), 11);
+        if (this.transactionService.updateTransactionById(transaction)) {
             log.info("订单状态更新成功");
             return ResponseBody.ok("付款完成");
         }
@@ -201,9 +205,9 @@ public class BuyerTx {
 
     @GetMapping({"getK2"})
     @ApiOperation(value = "下载K2", notes = "买家在卖家上传K2后，下载K2")
-    public ResponseBody getK2(UUID txId) {
+    public ResponseBody getK2(@RequestParam UUID txId) {
         Transaction tx = this.transactionService.findTransactionById(txId.toString());
-        if (tx.getStatus() < 12) {
+        if (tx == null || tx.getStatus() < 12) {
             log.info("非法操作，订单状态非法");
             return ResponseBody.fail("非法操作，订单状态非法");
         }
@@ -228,7 +232,6 @@ public class BuyerTx {
             String filename = file.getName();
             // 获取文件后缀名
             String ext = filename.substring(filename.lastIndexOf(".") + 1).toLowerCase();
-            log.info("文件后缀名：" + ext);
 
             // 将文件写入输入流
             FileInputStream fileInputStream = new FileInputStream(file);
