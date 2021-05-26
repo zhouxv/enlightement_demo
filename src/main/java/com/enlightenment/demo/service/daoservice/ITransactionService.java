@@ -13,13 +13,6 @@ import java.util.List;
 public interface ITransactionService extends IService<Transaction> {
 
     /**
-     * 查询（所有）
-     *
-     * @return List<Transaction>
-     */
-    List<Transaction> findAllTXBySellerId();
-
-    /**
      * 根据卖家id查询（所有）处于某一状态的订单
      *
      * @return List<Transaction>

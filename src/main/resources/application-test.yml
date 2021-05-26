@@ -6,9 +6,9 @@ spring:
   servlet:
     multipart:
       enabled: true
-      file-size-threshold: 2KB
-      max-file-size: 15MB
-      max-request-size: 16MB
+      file-size-threshold: 0
+      max-file-size: 100MB
+      max-request-size: 100MB
 
   datasource:
     druid:

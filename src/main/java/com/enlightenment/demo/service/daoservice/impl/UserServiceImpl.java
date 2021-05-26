@@ -34,7 +34,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Boolean createUser(User user) {
-        System.out.println(user);
         return this.save(user);
     }
 

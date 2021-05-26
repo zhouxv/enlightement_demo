@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.URLEncoder;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -55,6 +56,16 @@ public class BuyerTx {
         Map<String, String> map = new HashMap<>();
         map.put("txId", tx.getTxid());
         return ResponseBody.ok("开始协商，订单生成成功", map);
+    }
+
+    @PostMapping({"getAllTX"})
+    @ApiOperation(value = "检索所有的协商请求", notes = "卖家传递自己的公钥，检索所有的协商")
+    @ApiImplicitParams(value = {
+            @ApiImplicitParam(name = "buyerId", value = "卖家Id", required = true, dataTypeClass = UUID.class)
+    })
+    public ResponseBody getAll(@RequestParam UUID buyerId) {
+        List<Transaction> list = this.transactionService.findAllTXByBuyerId(buyerId.toString(), null);
+        return ResponseBody.ok("检索完成", list);
     }
 
     @GetMapping({"getOuterKey"})

@@ -79,6 +79,7 @@ public class FileServiceImp implements FileService {
             return false;
         }
 
+        System.out.println(file.getOriginalFilename());
         // 1.以文件哈希值作为名字,要有文件后缀名
         String sampleFileName = fileName + suffixOfFile(file.getOriginalFilename());
 

@@ -20,8 +20,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.enlightenment.demo.util.crypto.MultipartFileSHA256.isHashLegal;
-
 
 @Slf4j
 @RestController
@@ -69,11 +67,11 @@ public class DataSetManagement {
         log.info("数据库中不存在该数据集");
 
 
-        if (!isHashLegal(sampleData, dataSetDTO.getSampleHash())) {
-            log.info("样本数据集提交文件hash验证未通过");
-            return ResponseBody.fail("样本数据集提交文件hash验证未通过");
-        }
-        log.info("样本数据集提交文件hash验证通过");
+//        if (!isHashLegal(sampleData, dataSetDTO.getSampleHash())) {
+//            log.info("样本数据集提交文件hash验证未通过");
+//            return ResponseBody.fail("样本数据集提交文件hash验证未通过");
+//        }
+//        log.info("样本数据集提交文件hash验证通过");
 
         // TODO: 2021/5/20 样本数据集签名验证
 

@@ -22,16 +22,12 @@ import java.util.List;
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public class TransactionServiceImpl extends ServiceImpl<TransactionMapper, Transaction> implements ITransactionService {
     @Override
-    public List<Transaction> findAllTXBySellerId() {
-        return this.list();
-    }
-
-    @Override
     public List<Transaction> findAllTXBySellerId(String sellerId, Integer status) {
         LambdaQueryWrapper<Transaction> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(Transaction::getSellerid, sellerId).eq(status != null, Transaction::getStatus, status);
         return this.list(wrapper);
     }
+
 
     @Override
     public List<Transaction> findAllTXByBuyerId(String buyerId, Integer status) {
