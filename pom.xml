@@ -21,6 +21,7 @@
         <mysql.version>8.0.25</mysql.version>
     </properties>
 
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
