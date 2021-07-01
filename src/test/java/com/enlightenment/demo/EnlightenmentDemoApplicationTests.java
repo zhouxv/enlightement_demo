@@ -1,9 +1,7 @@
 package com.enlightenment.demo;
 
-import com.enlightenment.demo.service.otherservice.CryptoService;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -13,8 +11,6 @@ import java.io.File;
 @RunWith(SpringRunner.class)
 class EnlightenmentDemoApplicationTests {
 
-    @Autowired
-    CryptoService service;
 
     public static void main(String[] args) {
         File file = new File("E:\\水星系统归档\\数据确权\\原型实现v2\\后端设计\\接口流程概述.xlsx");
