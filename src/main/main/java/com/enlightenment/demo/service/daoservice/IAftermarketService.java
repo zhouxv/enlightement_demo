@@ -11,6 +11,9 @@ import java.util.List;
  * @date 2021-06-27 19:19:48
  */
 public interface IAftermarketService extends IService<Aftermarket> {
+
+    List<Aftermarket> findAllAftermarket(Aftermarket aftermarket);
+
     /**
      * 查询（所有）
      *
