@@ -3,9 +3,7 @@ package com.enlightenment.demo.controller.goods;
 import com.enlightenment.demo.dto.GoodsDTO;
 import com.enlightenment.demo.dto.GoodsUpdateDTO;
 import com.enlightenment.demo.entity.Goods;
-import com.enlightenment.demo.service.daoservice.IDataSetService;
 import com.enlightenment.demo.service.daoservice.IGoodsService;
-import com.enlightenment.demo.service.daoservice.IUserService;
 import com.enlightenment.demo.util.ResponseBody;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -24,13 +22,9 @@ import static com.enlightenment.demo.dto.GoodsDTO.toGetGoods;
 @Api(tags = "GoodsManagement 商品管理")
 @RequestMapping({"goodsManagement"})
 public class GoodsManagement {
-    private final IDataSetService dataSetService;
-    private final IUserService userService;
     private final IGoodsService goodsService;
 
-    public GoodsManagement(IDataSetService dataSetService, IUserService userService, IGoodsService goodsService) {
-        this.dataSetService = dataSetService;
-        this.userService = userService;
+    public GoodsManagement(IGoodsService goodsService) {
         this.goodsService = goodsService;
     }
 

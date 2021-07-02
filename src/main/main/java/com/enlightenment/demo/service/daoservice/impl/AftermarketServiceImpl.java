@@ -1,5 +1,6 @@
 package com.enlightenment.demo.service.daoservice.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.enlightenment.demo.entity.Aftermarket;
 import com.enlightenment.demo.mapper.AftermarketMapper;
@@ -27,6 +28,12 @@ public class AftermarketServiceImpl extends ServiceImpl<AftermarketMapper, After
     }
 
     @Override
+    public List<Aftermarket> findAllAftermarket(Aftermarket aftermarket) {
+        LambdaQueryWrapper<Aftermarket> wrapper = new LambdaQueryWrapper<>(aftermarket);
+        return this.list(wrapper);
+    }
+
+    @Override
     public Aftermarket findAftermarketById(String aftermarketId) {
         return this.getById(aftermarketId);
     }
@@ -34,6 +41,7 @@ public class AftermarketServiceImpl extends ServiceImpl<AftermarketMapper, After
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Boolean createAftermarket(Aftermarket aftermarket) {
+        aftermarket.setReturnstatus(1);
         return this.save(aftermarket);
     }
 
@@ -42,6 +50,7 @@ public class AftermarketServiceImpl extends ServiceImpl<AftermarketMapper, After
     public Boolean updateAftermarketById(Aftermarket aftermarket) {
         return this.updateById(aftermarket);
     }
+
 
     @Override
     @Transactional(rollbackFor = Exception.class)
