@@ -179,7 +179,6 @@ api.push({
     list: []
 })
 document.onkeydown = keyDownSearch;
-
 function keyDownSearch(e) {
     const theEvent = e;
     const code = theEvent.keyCode || theEvent.which || theEvent.charCode;

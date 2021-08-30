@@ -7,7 +7,7 @@
     <title>清雁 QinYan</title>
     <link href="https://fonts.googleapis.cnpmjs.org/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"
           rel="stylesheet">
-    <link href="AllInOne.css?v=1630338974375" rel="stylesheet"/>
+    <link href="AllInOne.css?v=1630341084352" rel="stylesheet"/>
     <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.3.2/styles/xt256.min.css" rel="stylesheet">
     <style>        .literalblock pre, .listingblock pre:not(.highlight), .listingblock pre[class="highlight"], .listingblock pre[class^="highlight "], .listingblock pre.CodeRay, .listingblock pre.prettyprint {
         background: #000;
@@ -98,8 +98,8 @@
                                                                                              href="#_5_1_商城浏览">5.1.&nbsp;商城浏览</a>
             </h3>
                 <div class="paragraph" data-download="false" data-page=""
-                     data-url="http://localhost:8080/[shop]/[getAll]" id="970b382bb447378fa48a21ab5ae18de5-url"><p>
-                    <strong>URL:</strong><a class="bare" href="http://localhost:8080/[shop]/[getAll]">&nbsp;http://localhost:8080/[shop]/[getAll]</a>
+                     data-url="http://localhost:10080/[shop]/[getAll]" id="970b382bb447378fa48a21ab5ae18de5-url"><p>
+                    <strong>URL:</strong><a class="bare" href="http://localhost:10080/[shop]/[getAll]">&nbsp;http://localhost:10080/[shop]/[getAll]</a>
                 </p></div>
                 <div class="paragraph" data-method="GET" id="970b382bb447378fa48a21ab5ae18de5-method"><p>
                     <strong>Type:</strong>&nbsp;GET</p></div>
@@ -146,7 +146,7 @@
                         <td class="tableblock halign-left valign-top"><p class="tableblock">contractType</p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock"><input name="contractType"
                                                                                                    type="text"
-                                                                                                   value="650"/></p>
+                                                                                                   value="255"/></p>
                         </td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">int32</p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
@@ -199,7 +199,7 @@
                 <div class="paragraph"><p><strong>Response-example:</strong></p></div>
                 <div class="listingblock">
                     <div class="content" id="970b382bb447378fa48a21ab5ae18de5-response"><pre><code class="json">{
-  "code": 489,
+  "code": 909,
   "message": "success",
   "data": {
     "waring": "You may have used non-display generics."
@@ -211,7 +211,7 @@
                 <div class="listingblock">
                     <div class="content" id="970b382bb447378fa48a21ab5ae18de5-curl">
                         <pre><code
-                                class="bash">curl -X GET -i http://localhost:8080/[shop]/[getAll]?contractType=936</code></pre>
+                                class="bash">curl -X GET -i http://localhost:10080/[shop]/[getAll]?contractType=431</code></pre>
                     </div>
                 </div>
             </div>
@@ -219,8 +219,8 @@
                                                                                                        href="#_5_2_查询具体的商品信息">5.2.&nbsp;查询具体的商品信息</a>
             </h3>
                 <div class="paragraph" data-download="false" data-page=""
-                     data-url="http://localhost:8080/[shop]/[getOne]" id="d0c5483178cba698c113f52ddfe2dfd9-url"><p>
-                    <strong>URL:</strong><a class="bare" href="http://localhost:8080/[shop]/[getOne]">&nbsp;http://localhost:8080/[shop]/[getOne]</a>
+                     data-url="http://localhost:10080/[shop]/[getOne]" id="d0c5483178cba698c113f52ddfe2dfd9-url"><p>
+                    <strong>URL:</strong><a class="bare" href="http://localhost:10080/[shop]/[getOne]">&nbsp;http://localhost:10080/[shop]/[getOne]</a>
                 </p></div>
                 <div class="paragraph" data-method="GET" id="d0c5483178cba698c113f52ddfe2dfd9-method"><p>
                     <strong>Type:</strong>&nbsp;GET</p></div>
@@ -267,7 +267,7 @@
                         <td class="tableblock halign-left valign-top"><p class="tableblock">goodsId</p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock"><input name="goodsId"
                                                                                                    type="text"
-                                                                                                   value="52a19be3-3c55-4f6a-961b-2b05cb1f7473"/>
+                                                                                                   value="2ae22458-dca2-4aab-9e47-0c95598ceb45"/>
                         </p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
@@ -320,7 +320,7 @@
                 <div class="paragraph"><p><strong>Response-example:</strong></p></div>
                 <div class="listingblock">
                     <div class="content" id="d0c5483178cba698c113f52ddfe2dfd9-response"><pre><code class="json">{
-  "code": 598,
+  "code": 534,
   "message": "success",
   "data": {
     "waring": "You may have used non-display generics."
@@ -331,18 +331,18 @@
                 <div class="paragraph"><p><strong>Curl-example:</strong></p></div>
                 <div class="listingblock">
                     <div class="content" id="d0c5483178cba698c113f52ddfe2dfd9-curl">
-                        <pre><code class="bash">curl -X GET -i http://localhost:8080/[shop]/[getOne]?goodsId=33f078b6-7ad2-4bce-b386-a07b8c3f80e7</code></pre>
+                        <pre><code class="bash">curl -X GET -i http://localhost:10080/[shop]/[getOne]?goodsId=53c0ff72-215f-4a71-9144-6d634c5b3005</code></pre>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <footer class="page-footer"><span class="copyright">Generated by smart-doc at 2021-08-30 23:56:14</span><span
+    <footer class="page-footer"><span class="copyright">Generated by smart-doc at 2021-08-31 00:31:24</span><span
             class="footer-modification">Suggestions,contact,support and error reporting on<a
             href="https://gitee.com/smart-doc-team/smart-doc" target="_blank">&nbsp;Gitee</a>&nbsp;or<a
             href="https://github.com/smart-doc-group/smart-doc.git" target="_blank">&nbsp;Github</a></span></footer>
 </div>
-<script src="debug.js?v=1630338974375"></script>
-<script src="search.js?v=1630338974375"></script>
+<script src="debug.js?v=1630341084352"></script>
+<script src="search.js?v=1630341084352"></script>
 </body>
 </html>

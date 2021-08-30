@@ -7,7 +7,7 @@
     <title>清雁 QinYan</title>
     <link href="https://fonts.googleapis.cnpmjs.org/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"
           rel="stylesheet">
-    <link href="AllInOne.css?v=1630338974375" rel="stylesheet"/>
+    <link href="AllInOne.css?v=1630341084352" rel="stylesheet"/>
     <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.3.2/styles/xt256.min.css" rel="stylesheet">
     <style>        .literalblock pre, .listingblock pre:not(.highlight), .listingblock pre[class="highlight"], .listingblock pre[class^="highlight "], .listingblock pre.CodeRay, .listingblock pre.prettyprint {
         background: #000;
@@ -98,8 +98,8 @@
                                                                                                            href="#_7_1_卖家检索所有的协商请求">7.1.&nbsp;卖家检索所有的协商请求</a>
             </h3>
                 <div class="paragraph" data-download="false" data-page=""
-                     data-url="http://localhost:8080/[sellerTx]/[getAllTX]" id="9f3faedcf8f31fc1be7a2ce802d120a3-url">
-                    <p><strong>URL:</strong><a class="bare" href="http://localhost:8080/[sellerTx]/[getAllTX]">&nbsp;http://localhost:8080/[sellerTx]/[getAllTX]</a>
+                     data-url="http://localhost:10080/[sellerTx]/[getAllTX]" id="9f3faedcf8f31fc1be7a2ce802d120a3-url">
+                    <p><strong>URL:</strong><a class="bare" href="http://localhost:10080/[sellerTx]/[getAllTX]">&nbsp;http://localhost:10080/[sellerTx]/[getAllTX]</a>
                     </p></div>
                 <div class="paragraph" data-method="POST" id="9f3faedcf8f31fc1be7a2ce802d120a3-method"><p>
                     <strong>Type:</strong>&nbsp;POST</p></div>
@@ -146,7 +146,7 @@
                         <td class="tableblock halign-left valign-top"><p class="tableblock">sellerId</p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock"><input name="sellerId"
                                                                                                    type="text"
-                                                                                                   value="7caac554-35b5-4735-aa43-39c968274769"/>
+                                                                                                   value="37a3de1e-d509-49f8-94a5-407f6a0effee"/>
                         </p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
@@ -199,7 +199,7 @@
                 <div class="paragraph"><p><strong>Response-example:</strong></p></div>
                 <div class="listingblock">
                     <div class="content" id="9f3faedcf8f31fc1be7a2ce802d120a3-response"><pre><code class="json">{
-  "code": 120,
+  "code": 286,
   "message": "success",
   "data": {
     "waring": "You may have used non-display generics."
@@ -210,7 +210,7 @@
                 <div class="paragraph"><p><strong>Curl-example:</strong></p></div>
                 <div class="listingblock">
                     <div class="content" id="9f3faedcf8f31fc1be7a2ce802d120a3-curl">
-                        <pre><code class="bash">curl -X POST -i http://localhost:8080/[sellerTx]/[getAllTX] --data 'sellerId=60f4d775-0cff-45f3-99e4-19b410d32802'</code></pre>
+                        <pre><code class="bash">curl -X POST -i http://localhost:10080/[sellerTx]/[getAllTX] --data 'sellerId=d6820ac1-5759-4287-9ca5-6f889bc895de'</code></pre>
                     </div>
                 </div>
             </div>
@@ -218,8 +218,8 @@
                                                                                              href="#_7_2_卖家协商">7.2.&nbsp;卖家协商</a>
             </h3>
                 <div class="paragraph" data-download="false" data-page=""
-                     data-url="http://localhost:8080/[sellerTx]/[negotiate]" id="a1dcb8b6835b386714dfddc1ac30949e-url">
-                    <p><strong>URL:</strong><a class="bare" href="http://localhost:8080/[sellerTx]/[negotiate]">&nbsp;http://localhost:8080/[sellerTx]/[negotiate]</a>
+                     data-url="http://localhost:10080/[sellerTx]/[negotiate]" id="a1dcb8b6835b386714dfddc1ac30949e-url">
+                    <p><strong>URL:</strong><a class="bare" href="http://localhost:10080/[sellerTx]/[negotiate]">&nbsp;http://localhost:10080/[sellerTx]/[negotiate]</a>
                     </p></div>
                 <div class="paragraph" data-method="GET" id="a1dcb8b6835b386714dfddc1ac30949e-method"><p>
                     <strong>Type:</strong>&nbsp;GET</p></div>
@@ -266,11 +266,11 @@
                         <td class="tableblock halign-left valign-top"><p class="tableblock">txId</p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock"><input name="txId"
                                                                                                    type="text"
-                                                                                                   value="0ba7392b-9208-4afe-8712-5ec82f97e857"/>
+                                                                                                   value="c85b9d53-1a11-4dff-a816-0c06ab2f9f29"/>
                         </p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
-                        <td class="tableblock halign-left valign-top"><p class="tableblock">订单Id</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock"> 订单Id</p></td>
                     </tr>
                     <tr>
                         <td class="tableblock halign-left valign-top">
@@ -287,7 +287,7 @@
                         </td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-                        <td class="tableblock halign-left valign-top"><p class="tableblock">是否通过协商</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock"> 是否通过协商</p></td>
                     </tr>
                     <tr>
                         <td class="tableblock halign-left valign-top">
@@ -300,7 +300,7 @@
                         <td class="tableblock halign-left valign-top"><p class="tableblock">newPrice</p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock"><input name="newPrice"
                                                                                                    type="text"
-                                                                                                   value="89.07"/></p>
+                                                                                                   value="30.16"/></p>
                         </td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">double</p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
@@ -353,7 +353,7 @@
                 <div class="paragraph"><p><strong>Response-example:</strong></p></div>
                 <div class="listingblock">
                     <div class="content" id="a1dcb8b6835b386714dfddc1ac30949e-response"><pre><code class="json">{
-  "code": 154,
+  "code": 959,
   "message": "success",
   "data": {
     "waring": "You may have used non-display generics."
@@ -364,16 +364,16 @@
                 <div class="paragraph"><p><strong>Curl-example:</strong></p></div>
                 <div class="listingblock">
                     <div class="content" id="a1dcb8b6835b386714dfddc1ac30949e-curl">
-                        <pre><code class="bash">curl -X GET -i http://localhost:8080/[sellerTx]/[negotiate]?txId=01db957a-1c15-4623-87e3-de9a8f78042e&bool=true&newPrice=21.98</code></pre>
+                        <pre><code class="bash">curl -X GET -i http://localhost:10080/[sellerTx]/[negotiate]?newPrice=10.30&bool=true&txId=95aba524-3865-411a-8ef8-0375e8d98d76</code></pre>
                     </div>
                 </div>
             </div>
             <div class="sect2"><h3 id="_7_3_卖家上传OuterKey"><a class="anchor" href="#_7_3_卖家上传OuterKey"></a><a
                     class="link" href="#_7_3_卖家上传OuterKey">7.3.&nbsp;卖家上传OuterKey</a></h3>
                 <div class="paragraph" data-download="false" data-page=""
-                     data-url="http://localhost:8080/[sellerTx]/[uploadOuterKey]"
+                     data-url="http://localhost:10080/[sellerTx]/[uploadOuterKey]"
                      id="36e18efd75fbbb95593983b419a2443f-url"><p><strong>URL:</strong><a class="bare"
-                                                                                          href="http://localhost:8080/[sellerTx]/[uploadOuterKey]">&nbsp;http://localhost:8080/[sellerTx]/[uploadOuterKey]</a>
+                                                                                          href="http://localhost:10080/[sellerTx]/[uploadOuterKey]">&nbsp;http://localhost:10080/[sellerTx]/[uploadOuterKey]</a>
                 </p></div>
                 <div class="paragraph" data-method="POST" id="36e18efd75fbbb95593983b419a2443f-method"><p>
                     <strong>Type:</strong>&nbsp;POST</p></div>
@@ -430,10 +430,10 @@
                 <div class="listingblock">
                     <div class="content"><pre><code contenteditable="plaintext-only"
                                                     id="36e18efd75fbbb95593983b419a2443f-body">{
-  "txId": "d48adaf0-cfe3-422b-8ac0-a3730e69b625",
-  "outerKey": "96cleb",
-  "outerKeyHash": "19aa4x",
-  "outerKeySig": "i0ww92"
+  "txId": "17d29650-1c81-4d7c-b23d-06c65ebd2cef",
+  "outerKey": "elcx5h",
+  "outerKeyHash": "9oyvt9",
+  "outerKeySig": "j4pxhm"
 }</code></pre>
                     </div>
                 </div>
@@ -482,7 +482,7 @@
                 <div class="paragraph"><p><strong>Response-example:</strong></p></div>
                 <div class="listingblock">
                     <div class="content" id="36e18efd75fbbb95593983b419a2443f-response"><pre><code class="json">{
-  "code": 301,
+  "code": 0,
   "message": "success",
   "data": {
     "waring": "You may have used non-display generics."
@@ -492,11 +492,11 @@
                 </div>
                 <div class="paragraph"><p><strong>Curl-example:</strong></p></div>
                 <div class="listingblock">
-                    <div class="content" id="36e18efd75fbbb95593983b419a2443f-curl"><pre><code class="bash">curl -X POST -H 'Content-Type: application/json; charset=utf-8' -i http://localhost:8080/[sellerTx]/[uploadOuterKey] --data '{
-  "txId": "d48adaf0-cfe3-422b-8ac0-a3730e69b625",
-  "outerKey": "96cleb",
-  "outerKeyHash": "19aa4x",
-  "outerKeySig": "i0ww92"
+                    <div class="content" id="36e18efd75fbbb95593983b419a2443f-curl"><pre><code class="bash">curl -X POST -H 'Content-Type: application/json; charset=utf-8' -i http://localhost:10080/[sellerTx]/[uploadOuterKey] --data '{
+  "txId": "17d29650-1c81-4d7c-b23d-06c65ebd2cef",
+  "outerKey": "elcx5h",
+  "outerKeyHash": "9oyvt9",
+  "outerKeySig": "j4pxhm"
 }'</code></pre>
                     </div>
                 </div>
@@ -505,9 +505,9 @@
                                                                                                          href="#_7_4_卖家上传数据集密文包">7.4.&nbsp;卖家上传数据集密文包</a>
             </h3>
                 <div class="paragraph" data-download="false" data-page=""
-                     data-url="http://localhost:8080/[sellerTx]/[uploadDataSetCipher]"
+                     data-url="http://localhost:10080/[sellerTx]/[uploadDataSetCipher]"
                      id="ed60b666d65869d5674fc2351ac7be1f-url"><p><strong>URL:</strong><a class="bare"
-                                                                                          href="http://localhost:8080/[sellerTx]/[uploadDataSetCipher]">&nbsp;http://localhost:8080/[sellerTx]/[uploadDataSetCipher]</a>
+                                                                                          href="http://localhost:10080/[sellerTx]/[uploadDataSetCipher]">&nbsp;http://localhost:10080/[sellerTx]/[uploadDataSetCipher]</a>
                 </p></div>
                 <div class="paragraph" data-method="POST" id="ed60b666d65869d5674fc2351ac7be1f-method"><p>
                     <strong>Type:</strong>&nbsp;POST</p></div>
@@ -557,7 +557,7 @@
                                                                                                    value=""/></p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">file</p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
-                        <td class="tableblock halign-left valign-top"><p class="tableblock">MultipartFile</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock"> MultipartFile</p></td>
                     </tr>
                     <tr>
                         <td class="tableblock halign-left valign-top">
@@ -570,7 +570,7 @@
                         <td class="tableblock halign-left valign-top"><p class="tableblock">txId</p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock"><input name="txId"
                                                                                                    type="text"
-                                                                                                   value="bb3f85a1-8545-40a1-a1b1-7b6022729649"/>
+                                                                                                   value="9acd05c5-603e-416f-92a7-f117a25321fa"/>
                         </p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
@@ -586,7 +586,7 @@
                         </td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">dataSetCipherHash</p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock"><input
-                                name="dataSetCipherHash" type="text" value="r23xvx"/></p></td>
+                                name="dataSetCipherHash" type="text" value="aegqhm"/></p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">数据集密文哈希</p></td>
@@ -601,7 +601,7 @@
                         </td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">dataSetCipherSig</p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock"><input
-                                name="dataSetCipherSig" type="text" value="t0bw90"/></p></td>
+                                name="dataSetCipherSig" type="text" value="yievd6"/></p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">数据集密文签名</p></td>
@@ -653,7 +653,7 @@
                 <div class="paragraph"><p><strong>Response-example:</strong></p></div>
                 <div class="listingblock">
                     <div class="content" id="ed60b666d65869d5674fc2351ac7be1f-response"><pre><code class="json">{
-  "code": 666,
+  "code": 766,
   "message": "success",
   "data": {
     "waring": "You may have used non-display generics."
@@ -664,7 +664,7 @@
                 <div class="paragraph"><p><strong>Curl-example:</strong></p></div>
                 <div class="listingblock">
                     <div class="content" id="ed60b666d65869d5674fc2351ac7be1f-curl">
-                        <pre><code class="bash">curl -X POST -H 'Content-Type: multipart/form-data' -i http://localhost:8080/[sellerTx]/[uploadDataSetCipher] --data 'txId=3fd8b350-0089-4600-a663-7db2e2b6b9cf&dataSetCipherHash=vtu5ci&dataSetCipherSig=g4k1kf'</code></pre>
+                        <pre><code class="bash">curl -X POST -H 'Content-Type: multipart/form-data' -i http://localhost:10080/[sellerTx]/[uploadDataSetCipher] --data 'txId=5c3c55e3-b1dd-42d9-9fb5-ef244b075007&dataSetCipherHash=72ehgk&dataSetCipherSig=fzu0mm'</code></pre>
                     </div>
                 </div>
             </div>
@@ -672,8 +672,8 @@
                                                                                                  href="#_7_5_卖家上传K2">7.5.&nbsp;卖家上传K2</a>
             </h3>
                 <div class="paragraph" data-download="false" data-page=""
-                     data-url="http://localhost:8080/[sellerTx]/[addK2]" id="f69e4c993fc4be6da27c2ca15d5942ed-url"><p>
-                    <strong>URL:</strong><a class="bare" href="http://localhost:8080/[sellerTx]/[addK2]">&nbsp;http://localhost:8080/[sellerTx]/[addK2]</a>
+                     data-url="http://localhost:10080/[sellerTx]/[addK2]" id="f69e4c993fc4be6da27c2ca15d5942ed-url"><p>
+                    <strong>URL:</strong><a class="bare" href="http://localhost:10080/[sellerTx]/[addK2]">&nbsp;http://localhost:10080/[sellerTx]/[addK2]</a>
                 </p></div>
                 <div class="paragraph" data-method="POST" id="f69e4c993fc4be6da27c2ca15d5942ed-method"><p>
                     <strong>Type:</strong>&nbsp;POST</p></div>
@@ -718,8 +718,8 @@
                 <div class="listingblock">
                     <div class="content"><pre><code contenteditable="plaintext-only"
                                                     id="f69e4c993fc4be6da27c2ca15d5942ed-body">{
-  "txId": "d5833949-1b15-427d-9370-d361ce3141b8",
-  "K2": "0owb53"
+  "txId": "46497929-5c3d-4c63-a194-048a3673315d",
+  "K2": "8qto0l"
 }</code></pre>
                     </div>
                 </div>
@@ -768,7 +768,7 @@
                 <div class="paragraph"><p><strong>Response-example:</strong></p></div>
                 <div class="listingblock">
                     <div class="content" id="f69e4c993fc4be6da27c2ca15d5942ed-response"><pre><code class="json">{
-  "code": 181,
+  "code": 119,
   "message": "success",
   "data": {
     "waring": "You may have used non-display generics."
@@ -778,21 +778,21 @@
                 </div>
                 <div class="paragraph"><p><strong>Curl-example:</strong></p></div>
                 <div class="listingblock">
-                    <div class="content" id="f69e4c993fc4be6da27c2ca15d5942ed-curl"><pre><code class="bash">curl -X POST -H 'Content-Type: application/json; charset=utf-8' -i http://localhost:8080/[sellerTx]/[addK2] --data '{
-  "txId": "d5833949-1b15-427d-9370-d361ce3141b8",
-  "K2": "0owb53"
+                    <div class="content" id="f69e4c993fc4be6da27c2ca15d5942ed-curl"><pre><code class="bash">curl -X POST -H 'Content-Type: application/json; charset=utf-8' -i http://localhost:10080/[sellerTx]/[addK2] --data '{
+  "txId": "46497929-5c3d-4c63-a194-048a3673315d",
+  "K2": "8qto0l"
 }'</code></pre>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <footer class="page-footer"><span class="copyright">Generated by smart-doc at 2021-08-30 23:56:14</span><span
+    <footer class="page-footer"><span class="copyright">Generated by smart-doc at 2021-08-31 00:31:24</span><span
             class="footer-modification">Suggestions,contact,support and error reporting on<a
             href="https://gitee.com/smart-doc-team/smart-doc" target="_blank">&nbsp;Gitee</a>&nbsp;or<a
             href="https://github.com/smart-doc-group/smart-doc.git" target="_blank">&nbsp;Github</a></span></footer>
 </div>
-<script src="debug.js?v=1630338974375"></script>
-<script src="search.js?v=1630338974375"></script>
+<script src="debug.js?v=1630341084352"></script>
+<script src="search.js?v=1630341084352"></script>
 </body>
 </html>

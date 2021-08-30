@@ -1,5 +1,5 @@
 {
-  "serverUrl": "http://localhost:8080",
+  "serverUrl": "http://localhost:10080",
   "allInOne": false,
   "isStrict": false,
   "showAuthor": true,
