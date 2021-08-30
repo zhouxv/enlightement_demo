@@ -5,14 +5,14 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.5.2</version>
+        <version>2.4.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.enlightement</groupId>
+    <groupId>com.qingyan</groupId>
     <artifactId>demo</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>enlightenment_demo</name>
-    <description>光启系统demo</description>
+    <version>0.0.2</version>
+    <name>QinYan_demo</name>
+    <description>清雁系统demo</description>
     <packaging>jar</packaging>
 
     <!--版本属性值    -->
@@ -21,6 +21,17 @@
         <mysql.version>8.0.25</mysql.version>
     </properties>
 
+    <!-- SWAGGER编译错误补救方法`-->
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <id>jcenter-releases</id>
+            <name>jcenter</name>
+            <url>https://jcenter.bintray.com</url>
+        </repository>
+    </repositories>
 
     <dependencies>
         <dependency>
@@ -55,7 +66,6 @@
             <version>3.0.0</version>
         </dependency>
 
-
         <!--Fastjson 是一个 Java 库，可以将 Java 对象转换为 JSON 格式，当然它也可以将 JSON 字符串转换为 Java 对象。
         Fastjson 可以操作任何 Java 对象，即使是一些预先存在的没有源码的对象。-->
         <dependency>
@@ -64,7 +74,7 @@
             <version>1.2.76</version>
         </dependency>
 
-        <!--        druid数据源驱动-->
+        <!--druid数据源驱动-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
@@ -163,6 +173,39 @@
                     </excludes>
                 </configuration>
             </plugin>
+
+            <!--smart doc plugin-->
+            <plugin>
+                <groupId>com.github.shalousun</groupId>
+                <artifactId>smart-doc-maven-plugin</artifactId>
+                <version>2.2.5</version>
+                <configuration>
+                    <!--指定用于生成文档的配置文件 -->
+                    <configFile>src/main/resources/smart-doc.json</configFile>
+                    <!--smart-doc 实现了依赖树的自动分析，加载第三方依赖的源码。 如果某些框架依赖库没有加载，报错，然后使用 excludes 排除-->
+                    <excludes>
+                        <!--格式为：groupId: artifactId; 参考以下-->
+                        <exclude>com.alibaba:fastjson</exclude>
+                    </excludes>
+                    <!--&lt;!&ndash;从 1.0.8 版本开始，该插件提供了includes支持&ndash;&gt;-->
+                    <!--&lt;!&ndash;smart-doc 可以自动分析依赖树来加载所有依赖的源代码。原则上这会影响文档构建的效率，所以可以使用includes让插件加载你配置的组件。&ndash;&gt;-->
+                    <!--<includes>-->
+                    <!--&lt;!&ndash;格式为：groupId: artifactId; 参考以下&ndash;&gt;-->
+                    <!--<include>com.alibaba:fastjson</include>-->
+                    <!--</includes>-->
+                </configuration>
+                <executions>
+                    <execution>
+                        <!--如果编译时不需要启动 smart-doc，则注释掉-->
+                        <phase>compile</phase>
+                        <goals>
+                            <!--smart-doc provides html, openapi, markdown, adoc and other goals-->
+                            <goal>html</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 

@@ -1,0 +1,13 @@
+{
+  "serverUrl": "http://localhost:8080",
+  "allInOne": false,
+  "isStrict": false,
+  "showAuthor": true,
+  "coverOld": true,
+  "language": "CHINESE",
+  "style": "xt256",
+  "createDebugPage": true,
+  "packageFilters": "com.qingyan.demo.controller",
+  "outPath": "./src/main/resources/APIdoc",
+  "projectName": "清雁 QinYan"
+}

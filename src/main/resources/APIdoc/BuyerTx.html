@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="smart-doc" name="generator">
+    <title>清雁 QinYan</title>
+    <link href="https://fonts.googleapis.cnpmjs.org/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"
+          rel="stylesheet">
+    <link href="AllInOne.css?v=1630338974375" rel="stylesheet"/>
+    <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.3.2/styles/xt256.min.css" rel="stylesheet">
+    <style>        .literalblock pre, .listingblock pre:not(.highlight), .listingblock pre[class="highlight"], .listingblock pre[class^="highlight "], .listingblock pre.CodeRay, .listingblock pre.prettyprint {
+        background: #000;
+    }
+
+    .hljs {
+        padding: 0em;
+    }</style>
+    <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.3.2/highlight.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+</head>
+<body class="book toc2 toc-left">
+<div id="header"><h1>清雁 QinYan</h1>
+    <div class="toc2" id="toc">
+        <div id="book-search-input"><input id="search" placeholder="Type to search" type="text"></div>
+        <div id="toctitle"><span>API Reference</span></div>
+        <ul class="sectlevel1" id="accordion">
+            <li class=""><a class="dd" href="debug.html#header">1.&nbsp;买家售后 controller.</a>
+                <ul class="sectlevel2" style="display: none">
+                    <li><a href="debug.html#_1_1_买家发起仲裁">1.1.&nbsp;买家发起仲裁</a></li>
+                    <li><a href="debug.html#_1_2_检索所有的仲裁请求">1.2.&nbsp;检索所有的仲裁请求</a></li>
+                </ul>
+            </li>
+            <li class=""><a class="dd" href="sellerAftermarket.html#header">2.&nbsp;卖家售后 controller.</a>
+                <ul class="sectlevel2" style="display: none">
+                    <li><a href="sellerAftermarket.html#_2_1_检索所有的仲裁请求">2.1.&nbsp;检索所有的仲裁请求</a></li>
+                    <li><a href="sellerAftermarket.html#_2_2_卖家仲裁确认">2.2.&nbsp;卖家仲裁确认</a></li>
+                </ul>
+            </li>
+            <li class=""><a class="dd" href="DataSetManagement.html#header">3.&nbsp;用户数据集管理 controller.</a>
+                <ul class="sectlevel2" style="display: none">
+                    <li><a href="DataSetManagement.html#_3_1_数据集所有权声明接口">3.1.&nbsp;数据集所有权声明接口</a></li>
+                    <li><a href="DataSetManagement.html#_3_2_根据传入的字段检索数据集">3.2.&nbsp;根据传入的字段检索数据集</a></li>
+                </ul>
+            </li>
+            <li class=""><a class="dd" href="GoodsManagement.html#header">4.&nbsp;商品管理 controller.</a>
+                <ul class="sectlevel2" style="display: none">
+                    <li><a href="GoodsManagement.html#_4_1_卖家上架某数据集">4.1.&nbsp;卖家上架某数据集</a></li>
+                    <li><a href="GoodsManagement.html#_4_2_商品检索">4.2.&nbsp;商品检索</a></li>
+                    <li><a href="GoodsManagement.html#_4_3_卖家更新商品信息">4.3.&nbsp;卖家更新商品信息</a></li>
+                    <li><a href="GoodsManagement.html#_4_4_删除商品，下架商品">4.4.&nbsp;删除商品，下架商品</a></li>
+                </ul>
+            </li>
+            <li class=""><a class="dd" href="ShopController.html#header">5.&nbsp;商城浏览 controller.</a>
+                <ul class="sectlevel2" style="display: none">
+                    <li><a href="ShopController.html#_5_1_商城浏览">5.1.&nbsp;商城浏览</a></li>
+                    <li><a href="ShopController.html#_5_2_查询具体的商品信息">5.2.&nbsp;查询具体的商品信息</a></li>
+                </ul>
+            </li>
+            <li class="open"><a class="dd" href="BuyerTx.html#header">6.&nbsp;买家交易 controller.</a>
+                <ul class="sectlevel2" style="display: block">
+                    <li><a href="BuyerTx.html#_6_1_买家开始协商">6.1.&nbsp;买家开始协商</a></li>
+                    <li><a href="BuyerTx.html#_6_2_检索所有的协商请求">6.2.&nbsp;检索所有的协商请求</a></li>
+                    <li><a href="BuyerTx.html#_6_3_买家拿到outerKey">6.3.&nbsp;买家拿到outerKey</a></li>
+                    <li><a href="BuyerTx.html#_6_4_确认outerKey">6.4.&nbsp;确认outerKey</a></li>
+                    <li><a href="BuyerTx.html#_6_5_下载数据集密文包">6.5.&nbsp;下载数据集密文包</a></li>
+                    <li><a href="BuyerTx.html#_6_6_买家确认数据集密文">6.6.&nbsp;买家确认数据集密文</a></li>
+                    <li><a href="BuyerTx.html#_6_7_下载sample数据集">6.7.&nbsp;下载sample数据集</a></li>
+                    <li><a href="BuyerTx.html#_6_8_买家决定交易是否继续进行">6.8.&nbsp;买家决定交易是否继续进行</a></li>
+                    <li><a href="BuyerTx.html#_6_9_买家支付完成调用此接口">6.9.&nbsp;买家支付完成调用此接口</a></li>
+                    <li><a href="BuyerTx.html#_6_10_下载K2">6.10.&nbsp;下载K2</a></li>
+                    <li><a href="BuyerTx.html#_6_11_订单确认">6.11.&nbsp;订单确认</a></li>
+                </ul>
+            </li>
+            <li class=""><a class="dd" href="SellerTx.html#header">7.&nbsp;卖家交易 controller.</a>
+                <ul class="sectlevel2" style="display: none">
+                    <li><a href="SellerTx.html#_7_1_卖家检索所有的协商请求">7.1.&nbsp;卖家检索所有的协商请求</a></li>
+                    <li><a href="SellerTx.html#_7_2_卖家协商">7.2.&nbsp;卖家协商</a></li>
+                    <li><a href="SellerTx.html#_7_3_卖家上传OuterKey">7.3.&nbsp;卖家上传OuterKey</a></li>
+                    <li><a href="SellerTx.html#_7_4_卖家上传数据集密文包">7.4.&nbsp;卖家上传数据集密文包</a></li>
+                    <li><a href="SellerTx.html#_7_5_卖家上传K2">7.5.&nbsp;卖家上传K2</a></li>
+                </ul>
+            </li>
+            <li class=""><a class="dd" href="UserController.html#header">8.&nbsp;用户信息模块 controller.</a>
+                <ul class="sectlevel2" style="display: none">
+                    <li><a href="UserController.html#_8_1_用户注册">8.1.&nbsp;用户注册</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<div id="content">
+    <div class="sect1"><h2 id="_买家交易 controller."><a class="anchor" href="#_买家交易 controller."></a><a class="link"
+                                                                                                     href="#_买家交易 controller.">6.&nbsp;买家交易
+        controller.</a></h2>
+        <div class="sectionbody">
+            <div class="sect2"><h3 id="_6_1_买家开始协商"><a class="anchor" href="#_6_1_买家开始协商"></a><a class="link"
+                                                                                                 href="#_6_1_买家开始协商">6.1.&nbsp;买家开始协商</a>
+            </h3>
+                <div class="paragraph" data-download="false" data-page=""
+                     data-url="http://localhost:8080/[buyerTx]/[negotiate]" id="daae25ea7cf69e1afa8c878f4b779ae5-url">
+                    <p><strong>URL:</strong><a class="bare" href="http://localhost:8080/[buyerTx]/[negotiate]">&nbsp;http://localhost:8080/[buyerTx]/[negotiate]</a>
+                    </p></div>
+                <div class="paragraph" data-method="POST" id="daae25ea7cf69e1afa8c878f4b779ae5-method"><p>
+                    <strong>Type:</strong>&nbsp;POST</p></div>
+                <div class="paragraph"><p><strong>Author:</strong>&nbsp;zhouxv 2021/7/24.</p></div>
+                <div class="paragraph" data-content-type="application/json; charset=utf-8"
+                     id="daae25ea7cf69e1afa8c878f4b779ae5-content-type"><p><strong>Content-Type:</strong>&nbsp;application/json;
+                    charset=utf-8</p></div>
+                <div class="paragraph"><p><strong>Description:</strong>&nbsp;买家点击交易按钮，进入协商页面，点击提交，调用此接口</p></div>
+                <div class="paragraph"><p><strong>Body-parameters:</strong></p></div>
+                <table class="tableblock frame-all grid-all spread">
+                    <colgroup>
+                        <col style="width: 20%;">
+                        <col style="width: 20%;">
+                        <col style="width: 20%;">
+                        <col style="width: 20%;">
+                        <col style="width: 20%;">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th class="tableblock halign-left valign-top">Parameter</th>
+                        <th class="tableblock halign-left valign-top">Type</th>
+                        <th class="tableblock halign-left valign-top">Required</th>
+                        <th class="tableblock halign-left valign-top">Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">buyerId</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">买家id</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">goodsId</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">商品id</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">price</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">double</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">数据集价格</p></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="paragraph"><p><strong>Request-body:</strong></p></div>
+                <div class="listingblock">
+                    <div class="content"><pre><code contenteditable="plaintext-only"
+                                                    id="daae25ea7cf69e1afa8c878f4b779ae5-body">{
+  "buyerId": "3e63c654-63c5-4552-a270-0c879d1db00b",
+  "goodsId": "5bcd8fe4-0d11-431e-a41f-5d15d9cf6b96",
+  "price": 4.42
+}</code></pre>
+                    </div>
+                </div>
+                <div class="paragraph"><p><strong>Response-fields:</strong></p></div>
+                <table class="tableblock frame-all grid-all spread">
+                    <colgroup>
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th class="tableblock halign-left valign-top">Field</th>
+                        <th class="tableblock halign-left valign-top">Type</th>
+                        <th class="tableblock halign-left valign-top">Description</th>
+                        <th class="tableblock halign-left valign-top">Since</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">code</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">int32</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">状态码</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">message</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">状态描述</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">data</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">object</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">返回的数据</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="paragraph">
+                    <p><strong>
+                        <button class="send-button" data-id="daae25ea7cf69e1afa8c878f4b779ae5">Send Request</button>
+                    </strong><span id="daae25ea7cf69e1afa8c878f4b779ae5-resp-status"></span></p>
+                </div>
+                <div class="paragraph"><p><strong>Response-example:</strong></p></div>
+                <div class="listingblock">
+                    <div class="content" id="daae25ea7cf69e1afa8c878f4b779ae5-response"><pre><code class="json">{
+  "code": 697,
+  "message": "success",
+  "data": {
+    "waring": "You may have used non-display generics."
+  }
+}</code></pre>
+                    </div>
+                </div>
+                <div class="paragraph"><p><strong>Curl-example:</strong></p></div>
+                <div class="listingblock">
+                    <div class="content" id="daae25ea7cf69e1afa8c878f4b779ae5-curl"><pre><code class="bash">curl -X POST -H 'Content-Type: application/json; charset=utf-8' -i http://localhost:8080/[buyerTx]/[negotiate] --data '{
+  "buyerId": "3e63c654-63c5-4552-a270-0c879d1db00b",
+  "goodsId": "5bcd8fe4-0d11-431e-a41f-5d15d9cf6b96",
+  "price": 4.42
+}'</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="sect2"><h3 id="_6_2_检索所有的协商请求"><a class="anchor" href="#_6_2_检索所有的协商请求"></a><a class="link"
+                                                                                                       href="#_6_2_检索所有的协商请求">6.2.&nbsp;检索所有的协商请求</a>
+            </h3>
+                <div class="paragraph" data-download="false" data-page=""
+                     data-url="http://localhost:8080/[buyerTx]/[getAllTX]" id="2f770023e25388e83fb1b7f748f52181-url"><p>
+                    <strong>URL:</strong><a class="bare" href="http://localhost:8080/[buyerTx]/[getAllTX]">&nbsp;http://localhost:8080/[buyerTx]/[getAllTX]</a>
+                </p></div>
+                <div class="paragraph" data-method="POST" id="2f770023e25388e83fb1b7f748f52181-method"><p>
+                    <strong>Type:</strong>&nbsp;POST</p></div>
+                <div class="paragraph"><p><strong>Author:</strong>&nbsp;zhouxv 2021/7/24.</p></div>
+                <div class="paragraph" data-content-type="application/x-www-form-urlencoded;charset=utf-8"
+                     id="2f770023e25388e83fb1b7f748f52181-content-type"><p><strong>Content-Type:</strong>&nbsp;application/x-www-form-urlencoded;charset=utf-8
+                </p></div>
+                <div class="paragraph"><p><strong>Description:</strong>&nbsp;买家传递自己的公钥，检索所有的协商</p></div>
+                <div class="paragraph"><p><strong>Query-parameters:</strong></p></div>
+                <table class="tableblock frame-all grid-all spread">
+                    <colgroup>
+                        <col style="width: 5%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th class="tableblock halign-left valign-top">
+                            <div class='checkbox'><input checked="checked" class="check-all"
+                                                         id="2f770023e25388e83fb1b7f748f52181-query-checkbox"
+                                                         name="2f770023e25388e83fb1b7f748f52181-query-checkbox"
+                                                         type="checkbox"><label
+                                    for="2f770023e25388e83fb1b7f748f52181-query-checkbox"></label></div>
+                        </th>
+                        <th class="tableblock halign-left valign-top">Parameter</th>
+                        <th class="tableblock halign-left valign-top">Value</th>
+                        <th class="tableblock halign-left valign-top">Type</th>
+                        <th class="tableblock halign-left valign-top">Required</th>
+                        <th class="tableblock halign-left valign-top">Description</th>
+                    </tr>
+                    </thead>
+                    <tbody id="2f770023e25388e83fb1b7f748f52181-query-params">
+                    <tr>
+                        <td class="tableblock halign-left valign-top">
+                            <div class='checkbox'><input checked="checked"
+                                                         id="2f770023e25388e83fb1b7f748f52181-query-buyerId"
+                                                         name="2f770023e25388e83fb1b7f748f52181-query-checkbox"
+                                                         type="checkbox"><label
+                                    for="2f770023e25388e83fb1b7f748f52181-query-buyerId"></label></div>
+                        </td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">buyerId</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock"><input name="buyerId"
+                                                                                                   type="text"
+                                                                                                   value="9a563333-df1f-421f-9343-211010a51620"/>
+                        </p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">UUID</p></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="paragraph"><p><strong>Response-fields:</strong></p></div>
+                <table class="tableblock frame-all grid-all spread">
+                    <colgroup>
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th class="tableblock halign-left valign-top">Field</th>
+                        <th class="tableblock halign-left valign-top">Type</th>
+                        <th class="tableblock halign-left valign-top">Description</th>
+                        <th class="tableblock halign-left valign-top">Since</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">code</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">int32</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">状态码</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">message</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">状态描述</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">data</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">object</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">返回的数据</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="paragraph">
+                    <p><strong>
+                        <button class="send-button" data-id="2f770023e25388e83fb1b7f748f52181">Send Request</button>
+                    </strong><span id="2f770023e25388e83fb1b7f748f52181-resp-status"></span></p>
+                </div>
+                <div class="paragraph"><p><strong>Response-example:</strong></p></div>
+                <div class="listingblock">
+                    <div class="content" id="2f770023e25388e83fb1b7f748f52181-response"><pre><code class="json">{
+  "code": 246,
+  "message": "success",
+  "data": {
+    "waring": "You may have used non-display generics."
+  }
+}</code></pre>
+                    </div>
+                </div>
+                <div class="paragraph"><p><strong>Curl-example:</strong></p></div>
+                <div class="listingblock">
+                    <div class="content" id="2f770023e25388e83fb1b7f748f52181-curl">
+                        <pre><code class="bash">curl -X POST -i http://localhost:8080/[buyerTx]/[getAllTX] --data 'buyerId=07db574a-fd14-4b45-9b09-653ced35c3f9'</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="sect2"><h3 id="_6_3_买家拿到outerKey"><a class="anchor" href="#_6_3_买家拿到outerKey"></a><a
+                    class="link" href="#_6_3_买家拿到outerKey">6.3.&nbsp;买家拿到outerKey</a></h3>
+                <div class="paragraph" data-download="false" data-page=""
+                     data-url="http://localhost:8080/[buyerTx]/[getOuterKey]" id="b19c63de597fd213f7408f2ced50955f-url">
+                    <p><strong>URL:</strong><a class="bare" href="http://localhost:8080/[buyerTx]/[getOuterKey]">&nbsp;http://localhost:8080/[buyerTx]/[getOuterKey]</a>
+                    </p></div>
+                <div class="paragraph" data-method="GET" id="b19c63de597fd213f7408f2ced50955f-method"><p>
+                    <strong>Type:</strong>&nbsp;GET</p></div>
+                <div class="paragraph"><p><strong>Author:</strong>&nbsp;zhouxv 2021/7/24.</p></div>
+                <div class="paragraph" data-content-type="application/x-www-form-urlencoded;charset=utf-8"
+                     id="b19c63de597fd213f7408f2ced50955f-content-type"><p><strong>Content-Type:</strong>&nbsp;application/x-www-form-urlencoded;charset=utf-8
+                </p></div>
+                <div class="paragraph"><p><strong>Description:</strong>&nbsp;买家拿到卖家上传的outerKey</p></div>
+                <div class="paragraph"><p><strong>Query-parameters:</strong></p></div>
+                <table class="tableblock frame-all grid-all spread">
+                    <colgroup>
+                        <col style="width: 5%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th class="tableblock halign-left valign-top">
+                            <div class='checkbox'><input checked="checked" class="check-all"
+                                                         id="b19c63de597fd213f7408f2ced50955f-query-checkbox"
+                                                         name="b19c63de597fd213f7408f2ced50955f-query-checkbox"
+                                                         type="checkbox"><label
+                                    for="b19c63de597fd213f7408f2ced50955f-query-checkbox"></label></div>
+                        </th>
+                        <th class="tableblock halign-left valign-top">Parameter</th>
+                        <th class="tableblock halign-left valign-top">Value</th>
+                        <th class="tableblock halign-left valign-top">Type</th>
+                        <th class="tableblock halign-left valign-top">Required</th>
+                        <th class="tableblock halign-left valign-top">Description</th>
+                    </tr>
+                    </thead>
+                    <tbody id="b19c63de597fd213f7408f2ced50955f-query-params">
+                    <tr>
+                        <td class="tableblock halign-left valign-top">
+                            <div class='checkbox'><input checked="checked"
+                                                         id="b19c63de597fd213f7408f2ced50955f-query-txId"
+                                                         name="b19c63de597fd213f7408f2ced50955f-query-checkbox"
+                                                         type="checkbox"><label
+                                    for="b19c63de597fd213f7408f2ced50955f-query-txId"></label></div>
+                        </td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">txId</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock"><input name="txId"
+                                                                                                   type="text"
+                                                                                                   value="cbf3d56c-b826-4e25-b5e8-c94a9079082c"/>
+                        </p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">UUID</p></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="paragraph"><p><strong>Response-fields:</strong></p></div>
+                <table class="tableblock frame-all grid-all spread">
+                    <colgroup>
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th class="tableblock halign-left valign-top">Field</th>
+                        <th class="tableblock halign-left valign-top">Type</th>
+                        <th class="tableblock halign-left valign-top">Description</th>
+                        <th class="tableblock halign-left valign-top">Since</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">code</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">int32</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">状态码</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">message</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">状态描述</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">data</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">object</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">返回的数据</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="paragraph">
+                    <p><strong>
+                        <button class="send-button" data-id="b19c63de597fd213f7408f2ced50955f">Send Request</button>
+                    </strong><span id="b19c63de597fd213f7408f2ced50955f-resp-status"></span></p>
+                </div>
+                <div class="paragraph"><p><strong>Response-example:</strong></p></div>
+                <div class="listingblock">
+                    <div class="content" id="b19c63de597fd213f7408f2ced50955f-response"><pre><code class="json">{
+  "code": 443,
+  "message": "success",
+  "data": {
+    "waring": "You may have used non-display generics."
+  }
+}</code></pre>
+                    </div>
+                </div>
+                <div class="paragraph"><p><strong>Curl-example:</strong></p></div>
+                <div class="listingblock">
+                    <div class="content" id="b19c63de597fd213f7408f2ced50955f-curl">
+                        <pre><code class="bash">curl -X GET -i http://localhost:8080/[buyerTx]/[getOuterKey]?txId=d97f3eef-6b0f-4272-a80e-5bd971981d53</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="sect2"><h3 id="_6_4_确认outerKey"><a class="anchor" href="#_6_4_确认outerKey"></a><a class="link"
+                                                                                                         href="#_6_4_确认outerKey">6.4.&nbsp;确认outerKey</a>
+            </h3>
+                <div class="paragraph" data-download="false" data-page=""
+                     data-url="http://localhost:8080/[buyerTx]/[verifyOuterKey]"
+                     id="a21f55ff85786c3f16ccb82158b4a21d-url"><p><strong>URL:</strong><a class="bare"
+                                                                                          href="http://localhost:8080/[buyerTx]/[verifyOuterKey]">&nbsp;http://localhost:8080/[buyerTx]/[verifyOuterKey]</a>
+                </p></div>
+                <div class="paragraph" data-method="POST" id="a21f55ff85786c3f16ccb82158b4a21d-method"><p>
+                    <strong>Type:</strong>&nbsp;POST</p></div>
+                <div class="paragraph"><p><strong>Author:</strong>&nbsp;zhouxv 2021/7/24.</p></div>
+                <div class="paragraph" data-content-type="application/json; charset=utf-8"
+                     id="a21f55ff85786c3f16ccb82158b4a21d-content-type"><p><strong>Content-Type:</strong>&nbsp;application/json;
+                    charset=utf-8</p></div>
+                <div class="paragraph"><p><strong>Description:</strong>&nbsp;买家提交对称密钥的哈希和签名</p></div>
+                <div class="paragraph"><p><strong>Body-parameters:</strong></p></div>
+                <table class="tableblock frame-all grid-all spread">
+                    <colgroup>
+                        <col style="width: 20%;">
+                        <col style="width: 20%;">
+                        <col style="width: 20%;">
+                        <col style="width: 20%;">
+                        <col style="width: 20%;">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th class="tableblock halign-left valign-top">Parameter</th>
+                        <th class="tableblock halign-left valign-top">Type</th>
+                        <th class="tableblock halign-left valign-top">Required</th>
+                        <th class="tableblock halign-left valign-top">Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">txId</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">订单Id</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">outerKey</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">对称密钥</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">outerKeyHash</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">对称密钥哈希</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">outerKeySig</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">数据集价格</p></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="paragraph"><p><strong>Request-body:</strong></p></div>
+                <div class="listingblock">
+                    <div class="content"><pre><code contenteditable="plaintext-only"
+                                                    id="a21f55ff85786c3f16ccb82158b4a21d-body">{
+  "txId": "b0d32d2b-4cbd-4822-85d5-7ef7fe5ec48d",
+  "outerKey": "um72oo",
+  "outerKeyHash": "ta4e80",
+  "outerKeySig": "35dd3i"
+}</code></pre>
+                    </div>
+                </div>
+                <div class="paragraph"><p><strong>Response-fields:</strong></p></div>
+                <table class="tableblock frame-all grid-all spread">
+                    <colgroup>
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th class="tableblock halign-left valign-top">Field</th>
+                        <th class="tableblock halign-left valign-top">Type</th>
+                        <th class="tableblock halign-left valign-top">Description</th>
+                        <th class="tableblock halign-left valign-top">Since</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">code</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">int32</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">状态码</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">message</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">状态描述</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">data</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">object</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">返回的数据</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="paragraph">
+                    <p><strong>
+                        <button class="send-button" data-id="a21f55ff85786c3f16ccb82158b4a21d">Send Request</button>
+                    </strong><span id="a21f55ff85786c3f16ccb82158b4a21d-resp-status"></span></p>
+                </div>
+                <div class="paragraph"><p><strong>Response-example:</strong></p></div>
+                <div class="listingblock">
+                    <div class="content" id="a21f55ff85786c3f16ccb82158b4a21d-response"><pre><code class="json">{
+  "code": 266,
+  "message": "success",
+  "data": {
+    "waring": "You may have used non-display generics."
+  }
+}</code></pre>
+                    </div>
+                </div>
+                <div class="paragraph"><p><strong>Curl-example:</strong></p></div>
+                <div class="listingblock">
+                    <div class="content" id="a21f55ff85786c3f16ccb82158b4a21d-curl"><pre><code class="bash">curl -X POST -H 'Content-Type: application/json; charset=utf-8' -i http://localhost:8080/[buyerTx]/[verifyOuterKey] --data '{
+  "txId": "b0d32d2b-4cbd-4822-85d5-7ef7fe5ec48d",
+  "outerKey": "um72oo",
+  "outerKeyHash": "ta4e80",
+  "outerKeySig": "35dd3i"
+}'</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="sect2"><h3 id="_6_5_下载数据集密文包"><a class="anchor" href="#_6_5_下载数据集密文包"></a><a class="link"
+                                                                                                     href="#_6_5_下载数据集密文包">6.5.&nbsp;下载数据集密文包</a>
+            </h3>
+                <div class="paragraph" data-download="false" data-page=""
+                     data-url="http://localhost:8080/[buyerTx]/[downloadDataSetCipher]"
+                     id="91f1fa1efeb9ed905e64f9c7f250e893-url"><p><strong>URL:</strong><a class="bare"
+                                                                                          href="http://localhost:8080/[buyerTx]/[downloadDataSetCipher]">&nbsp;http://localhost:8080/[buyerTx]/[downloadDataSetCipher]</a>
+                </p></div>
+                <div class="paragraph" data-method="GET" id="91f1fa1efeb9ed905e64f9c7f250e893-method"><p>
+                    <strong>Type:</strong>&nbsp;GET</p></div>
+                <div class="paragraph"><p><strong>Author:</strong>&nbsp;zhouxv 2021/7/24.</p></div>
+                <div class="paragraph" data-content-type="application/x-www-form-urlencoded;charset=utf-8"
+                     id="91f1fa1efeb9ed905e64f9c7f250e893-content-type"><p><strong>Content-Type:</strong>&nbsp;application/x-www-form-urlencoded;charset=utf-8
+                </p></div>
+                <div class="paragraph"><p><strong>Description:</strong>&nbsp;买家下载数据集的密文包</p></div>
+                <div class="paragraph"><p><strong>Query-parameters:</strong></p></div>
+                <table class="tableblock frame-all grid-all spread">
+                    <colgroup>
+                        <col style="width: 5%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th class="tableblock halign-left valign-top">
+                            <div class='checkbox'><input checked="checked" class="check-all"
+                                                         id="91f1fa1efeb9ed905e64f9c7f250e893-query-checkbox"
+                                                         name="91f1fa1efeb9ed905e64f9c7f250e893-query-checkbox"
+                                                         type="checkbox"><label
+                                    for="91f1fa1efeb9ed905e64f9c7f250e893-query-checkbox"></label></div>
+                        </th>
+                        <th class="tableblock halign-left valign-top">Parameter</th>
+                        <th class="tableblock halign-left valign-top">Value</th>
+                        <th class="tableblock halign-left valign-top">Type</th>
+                        <th class="tableblock halign-left valign-top">Required</th>
+                        <th class="tableblock halign-left valign-top">Description</th>
+                    </tr>
+                    </thead>
+                    <tbody id="91f1fa1efeb9ed905e64f9c7f250e893-query-params">
+                    <tr>
+                        <td class="tableblock halign-left valign-top">
+                            <div class='checkbox'><input checked="checked"
+                                                         id="91f1fa1efeb9ed905e64f9c7f250e893-query-txId"
+                                                         name="91f1fa1efeb9ed905e64f9c7f250e893-query-checkbox"
+                                                         type="checkbox"><label
+                                    for="91f1fa1efeb9ed905e64f9c7f250e893-query-txId"></label></div>
+                        </td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">txId</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock"><input name="txId"
+                                                                                                   type="text"
+                                                                                                   value="9319a447-041a-4045-b9a1-6a9938aeeea0"/>
+                        </p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">UUID</p></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="paragraph">
+                    <p><strong>
+                        <button class="send-button" data-id="91f1fa1efeb9ed905e64f9c7f250e893">Send Request</button>
+                    </strong><span id="91f1fa1efeb9ed905e64f9c7f250e893-resp-status"></span></p>
+                </div>
+                <div class="paragraph"><p><strong>Response-example:</strong></p></div>
+                <div class="listingblock">
+                    <div class="content" id="91f1fa1efeb9ed905e64f9c7f250e893-response">
+                        <pre><code class="json">Doesn't return a value.</code></pre>
+                    </div>
+                </div>
+                <div class="paragraph"><p><strong>Curl-example:</strong></p></div>
+                <div class="listingblock">
+                    <div class="content" id="91f1fa1efeb9ed905e64f9c7f250e893-curl">
+                        <pre><code class="bash">curl -X GET -i http://localhost:8080/[buyerTx]/[downloadDataSetCipher]?txId=30fe8dc0-de72-4e9d-ad24-71f0225fcd64</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="sect2"><h3 id="_6_6_买家确认数据集密文"><a class="anchor" href="#_6_6_买家确认数据集密文"></a><a class="link"
+                                                                                                       href="#_6_6_买家确认数据集密文">6.6.&nbsp;买家确认数据集密文</a>
+            </h3>
+                <div class="paragraph" data-download="false" data-page=""
+                     data-url="http://localhost:8080/[buyerTx]/[verifyDataSetCipher]"
+                     id="6f6727df8d06b16a36f5b932210a7d8f-url"><p><strong>URL:</strong><a class="bare"
+                                                                                          href="http://localhost:8080/[buyerTx]/[verifyDataSetCipher]">&nbsp;http://localhost:8080/[buyerTx]/[verifyDataSetCipher]</a>
+                </p></div>
+                <div class="paragraph" data-method="POST" id="6f6727df8d06b16a36f5b932210a7d8f-method"><p>
+                    <strong>Type:</strong>&nbsp;POST</p></div>
+                <div class="paragraph"><p><strong>Author:</strong>&nbsp;zhouxv 2021/7/24.</p></div>
+                <div class="paragraph" data-content-type="application/json; charset=utf-8"
+                     id="6f6727df8d06b16a36f5b932210a7d8f-content-type"><p><strong>Content-Type:</strong>&nbsp;application/json;
+                    charset=utf-8</p></div>
+                <div class="paragraph"><p><strong>Description:</strong>&nbsp;买家传递收到的密文包的哈希和签名</p></div>
+                <div class="paragraph"><p><strong>Body-parameters:</strong></p></div>
+                <table class="tableblock frame-all grid-all spread">
+                    <colgroup>
+                        <col style="width: 20%;">
+                        <col style="width: 20%;">
+                        <col style="width: 20%;">
+                        <col style="width: 20%;">
+                        <col style="width: 20%;">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th class="tableblock halign-left valign-top">Parameter</th>
+                        <th class="tableblock halign-left valign-top">Type</th>
+                        <th class="tableblock halign-left valign-top">Required</th>
+                        <th class="tableblock halign-left valign-top">Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">txId</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">交易Id</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">dataSetCipherHash</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">数据集密文哈希</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">dataSetCipherSig</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">数据集密文签名</p></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="paragraph"><p><strong>Request-body:</strong></p></div>
+                <div class="listingblock">
+                    <div class="content"><pre><code contenteditable="plaintext-only"
+                                                    id="6f6727df8d06b16a36f5b932210a7d8f-body">{
+  "txId": "2fc13a6f-c5ff-4c22-872d-8f28fc0a4650",
+  "dataSetCipherHash": "en50ok",
+  "dataSetCipherSig": "0tyh41"
+}</code></pre>
+                    </div>
+                </div>
+                <div class="paragraph"><p><strong>Response-fields:</strong></p></div>
+                <table class="tableblock frame-all grid-all spread">
+                    <colgroup>
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th class="tableblock halign-left valign-top">Field</th>
+                        <th class="tableblock halign-left valign-top">Type</th>
+                        <th class="tableblock halign-left valign-top">Description</th>
+                        <th class="tableblock halign-left valign-top">Since</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">code</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">int32</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">状态码</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">message</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">状态描述</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">data</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">object</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">返回的数据</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="paragraph">
+                    <p><strong>
+                        <button class="send-button" data-id="6f6727df8d06b16a36f5b932210a7d8f">Send Request</button>
+                    </strong><span id="6f6727df8d06b16a36f5b932210a7d8f-resp-status"></span></p>
+                </div>
+                <div class="paragraph"><p><strong>Response-example:</strong></p></div>
+                <div class="listingblock">
+                    <div class="content" id="6f6727df8d06b16a36f5b932210a7d8f-response"><pre><code class="json">{
+  "code": 761,
+  "message": "success",
+  "data": {
+    "waring": "You may have used non-display generics."
+  }
+}</code></pre>
+                    </div>
+                </div>
+                <div class="paragraph"><p><strong>Curl-example:</strong></p></div>
+                <div class="listingblock">
+                    <div class="content" id="6f6727df8d06b16a36f5b932210a7d8f-curl"><pre><code class="bash">curl -X POST -H 'Content-Type: application/json; charset=utf-8' -i http://localhost:8080/[buyerTx]/[verifyDataSetCipher] --data '{
+  "txId": "2fc13a6f-c5ff-4c22-872d-8f28fc0a4650",
+  "dataSetCipherHash": "en50ok",
+  "dataSetCipherSig": "0tyh41"
+}'</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="sect2"><h3 id="_6_7_下载sample数据集"><a class="anchor" href="#_6_7_下载sample数据集"></a><a class="link"
+                                                                                                           href="#_6_7_下载sample数据集">6.7.&nbsp;下载sample数据集</a>
+            </h3>
+                <div class="paragraph" data-download="false" data-page=""
+                     data-url="http://localhost:8080/[buyerTx]/[downloadSample]"
+                     id="a5902015e18b0d736379aea57ce4a0cc-url"><p><strong>URL:</strong><a class="bare"
+                                                                                          href="http://localhost:8080/[buyerTx]/[downloadSample]">&nbsp;http://localhost:8080/[buyerTx]/[downloadSample]</a>
+                </p></div>
+                <div class="paragraph" data-method="GET" id="a5902015e18b0d736379aea57ce4a0cc-method"><p>
+                    <strong>Type:</strong>&nbsp;GET</p></div>
+                <div class="paragraph"><p><strong>Author:</strong>&nbsp;zhouxv 2021/7/24.</p></div>
+                <div class="paragraph" data-content-type="application/x-www-form-urlencoded;charset=utf-8"
+                     id="a5902015e18b0d736379aea57ce4a0cc-content-type"><p><strong>Content-Type:</strong>&nbsp;application/x-www-form-urlencoded;charset=utf-8
+                </p></div>
+                <div class="paragraph"><p><strong>Description:</strong>&nbsp;买家下载sample数据集</p></div>
+                <div class="paragraph"><p><strong>Query-parameters:</strong></p></div>
+                <table class="tableblock frame-all grid-all spread">
+                    <colgroup>
+                        <col style="width: 5%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th class="tableblock halign-left valign-top">
+                            <div class='checkbox'><input checked="checked" class="check-all"
+                                                         id="a5902015e18b0d736379aea57ce4a0cc-query-checkbox"
+                                                         name="a5902015e18b0d736379aea57ce4a0cc-query-checkbox"
+                                                         type="checkbox"><label
+                                    for="a5902015e18b0d736379aea57ce4a0cc-query-checkbox"></label></div>
+                        </th>
+                        <th class="tableblock halign-left valign-top">Parameter</th>
+                        <th class="tableblock halign-left valign-top">Value</th>
+                        <th class="tableblock halign-left valign-top">Type</th>
+                        <th class="tableblock halign-left valign-top">Required</th>
+                        <th class="tableblock halign-left valign-top">Description</th>
+                    </tr>
+                    </thead>
+                    <tbody id="a5902015e18b0d736379aea57ce4a0cc-query-params">
+                    <tr>
+                        <td class="tableblock halign-left valign-top">
+                            <div class='checkbox'><input checked="checked"
+                                                         id="a5902015e18b0d736379aea57ce4a0cc-query-txId"
+                                                         name="a5902015e18b0d736379aea57ce4a0cc-query-checkbox"
+                                                         type="checkbox"><label
+                                    for="a5902015e18b0d736379aea57ce4a0cc-query-txId"></label></div>
+                        </td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">txId</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock"><input name="txId"
+                                                                                                   type="text"
+                                                                                                   value="b28512cc-f994-48fa-8b87-f82ce66d5bdf"/>
+                        </p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">UUID</p></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="paragraph">
+                    <p><strong>
+                        <button class="send-button" data-id="a5902015e18b0d736379aea57ce4a0cc">Send Request</button>
+                    </strong><span id="a5902015e18b0d736379aea57ce4a0cc-resp-status"></span></p>
+                </div>
+                <div class="paragraph"><p><strong>Response-example:</strong></p></div>
+                <div class="listingblock">
+                    <div class="content" id="a5902015e18b0d736379aea57ce4a0cc-response">
+                        <pre><code class="json">Doesn't return a value.</code></pre>
+                    </div>
+                </div>
+                <div class="paragraph"><p><strong>Curl-example:</strong></p></div>
+                <div class="listingblock">
+                    <div class="content" id="a5902015e18b0d736379aea57ce4a0cc-curl">
+                        <pre><code class="bash">curl -X GET -i http://localhost:8080/[buyerTx]/[downloadSample]?txId=249f94a5-6ac9-4f20-bb76-e31512a01d86</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="sect2"><h3 id="_6_8_买家决定交易是否继续进行"><a class="anchor" href="#_6_8_买家决定交易是否继续进行"></a><a
+                    class="link" href="#_6_8_买家决定交易是否继续进行">6.8.&nbsp;买家决定交易是否继续进行</a></h3>
+                <div class="paragraph" data-download="false" data-page=""
+                     data-url="http://localhost:8080/[buyerTx]/[decision]" id="d3f33113a7cafacba3973d97dfde8338-url"><p>
+                    <strong>URL:</strong><a class="bare" href="http://localhost:8080/[buyerTx]/[decision]">&nbsp;http://localhost:8080/[buyerTx]/[decision]</a>
+                </p></div>
+                <div class="paragraph" data-method="GET" id="d3f33113a7cafacba3973d97dfde8338-method"><p>
+                    <strong>Type:</strong>&nbsp;GET</p></div>
+                <div class="paragraph"><p><strong>Author:</strong>&nbsp;zhouxv 2021/7/24.</p></div>
+                <div class="paragraph" data-content-type="application/x-www-form-urlencoded;charset=utf-8"
+                     id="d3f33113a7cafacba3973d97dfde8338-content-type"><p><strong>Content-Type:</strong>&nbsp;application/x-www-form-urlencoded;charset=utf-8
+                </p></div>
+                <div class="paragraph"><p><strong>Description:</strong>&nbsp;买家查看样本数据后，决定是否继续进行交易</p></div>
+                <div class="paragraph"><p><strong>Query-parameters:</strong></p></div>
+                <table class="tableblock frame-all grid-all spread">
+                    <colgroup>
+                        <col style="width: 5%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th class="tableblock halign-left valign-top">
+                            <div class='checkbox'><input checked="checked" class="check-all"
+                                                         id="d3f33113a7cafacba3973d97dfde8338-query-checkbox"
+                                                         name="d3f33113a7cafacba3973d97dfde8338-query-checkbox"
+                                                         type="checkbox"><label
+                                    for="d3f33113a7cafacba3973d97dfde8338-query-checkbox"></label></div>
+                        </th>
+                        <th class="tableblock halign-left valign-top">Parameter</th>
+                        <th class="tableblock halign-left valign-top">Value</th>
+                        <th class="tableblock halign-left valign-top">Type</th>
+                        <th class="tableblock halign-left valign-top">Required</th>
+                        <th class="tableblock halign-left valign-top">Description</th>
+                    </tr>
+                    </thead>
+                    <tbody id="d3f33113a7cafacba3973d97dfde8338-query-params">
+                    <tr>
+                        <td class="tableblock halign-left valign-top">
+                            <div class='checkbox'><input checked="checked"
+                                                         id="d3f33113a7cafacba3973d97dfde8338-query-txId"
+                                                         name="d3f33113a7cafacba3973d97dfde8338-query-checkbox"
+                                                         type="checkbox"><label
+                                    for="d3f33113a7cafacba3973d97dfde8338-query-txId"></label></div>
+                        </td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">txId</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock"><input name="txId"
+                                                                                                   type="text"
+                                                                                                   value="64405a97-c244-436b-8562-18fdb548ecf6"/>
+                        </p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">UUID</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top">
+                            <div class='checkbox'><input checked="checked"
+                                                         id="d3f33113a7cafacba3973d97dfde8338-query-bool"
+                                                         name="d3f33113a7cafacba3973d97dfde8338-query-checkbox"
+                                                         type="checkbox"><label
+                                    for="d3f33113a7cafacba3973d97dfde8338-query-bool"></label></div>
+                        </td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock"><input name="bool"
+                                                                                                   type="text"
+                                                                                                   value="true"/></p>
+                        </td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="paragraph"><p><strong>Response-fields:</strong></p></div>
+                <table class="tableblock frame-all grid-all spread">
+                    <colgroup>
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th class="tableblock halign-left valign-top">Field</th>
+                        <th class="tableblock halign-left valign-top">Type</th>
+                        <th class="tableblock halign-left valign-top">Description</th>
+                        <th class="tableblock halign-left valign-top">Since</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">code</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">int32</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">状态码</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">message</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">状态描述</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">data</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">object</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">返回的数据</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="paragraph">
+                    <p><strong>
+                        <button class="send-button" data-id="d3f33113a7cafacba3973d97dfde8338">Send Request</button>
+                    </strong><span id="d3f33113a7cafacba3973d97dfde8338-resp-status"></span></p>
+                </div>
+                <div class="paragraph"><p><strong>Response-example:</strong></p></div>
+                <div class="listingblock">
+                    <div class="content" id="d3f33113a7cafacba3973d97dfde8338-response"><pre><code class="json">{
+  "code": 310,
+  "message": "success",
+  "data": {
+    "waring": "You may have used non-display generics."
+  }
+}</code></pre>
+                    </div>
+                </div>
+                <div class="paragraph"><p><strong>Curl-example:</strong></p></div>
+                <div class="listingblock">
+                    <div class="content" id="d3f33113a7cafacba3973d97dfde8338-curl">
+                        <pre><code class="bash">curl -X GET -i http://localhost:8080/[buyerTx]/[decision]?txId=84b63201-5745-432d-ace3-10f7bb0885fe&bool=true</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="sect2"><h3 id="_6_9_买家支付完成调用此接口"><a class="anchor" href="#_6_9_买家支付完成调用此接口"></a><a class="link"
+                                                                                                           href="#_6_9_买家支付完成调用此接口">6.9.&nbsp;买家支付完成调用此接口</a>
+            </h3>
+                <div class="paragraph" data-download="false" data-page=""
+                     data-url="http://localhost:8080/[buyerTx]/[pay]" id="b5621ed61f5fe38f9f9d83b3fb05cbc3-url"><p>
+                    <strong>URL:</strong><a class="bare" href="http://localhost:8080/[buyerTx]/[pay]">&nbsp;http://localhost:8080/[buyerTx]/[pay]</a>
+                </p></div>
+                <div class="paragraph" data-method="GET" id="b5621ed61f5fe38f9f9d83b3fb05cbc3-method"><p>
+                    <strong>Type:</strong>&nbsp;GET</p></div>
+                <div class="paragraph"><p><strong>Author:</strong>&nbsp;zhouxv 2021/7/24.</p></div>
+                <div class="paragraph" data-content-type="application/x-www-form-urlencoded;charset=utf-8"
+                     id="b5621ed61f5fe38f9f9d83b3fb05cbc3-content-type"><p><strong>Content-Type:</strong>&nbsp;application/x-www-form-urlencoded;charset=utf-8
+                </p></div>
+                <div class="paragraph"><p><strong>Description:</strong>&nbsp;买家支付完成调用此接口</p></div>
+                <div class="paragraph"><p><strong>Query-parameters:</strong></p></div>
+                <table class="tableblock frame-all grid-all spread">
+                    <colgroup>
+                        <col style="width: 5%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th class="tableblock halign-left valign-top">
+                            <div class='checkbox'><input checked="checked" class="check-all"
+                                                         id="b5621ed61f5fe38f9f9d83b3fb05cbc3-query-checkbox"
+                                                         name="b5621ed61f5fe38f9f9d83b3fb05cbc3-query-checkbox"
+                                                         type="checkbox"><label
+                                    for="b5621ed61f5fe38f9f9d83b3fb05cbc3-query-checkbox"></label></div>
+                        </th>
+                        <th class="tableblock halign-left valign-top">Parameter</th>
+                        <th class="tableblock halign-left valign-top">Value</th>
+                        <th class="tableblock halign-left valign-top">Type</th>
+                        <th class="tableblock halign-left valign-top">Required</th>
+                        <th class="tableblock halign-left valign-top">Description</th>
+                    </tr>
+                    </thead>
+                    <tbody id="b5621ed61f5fe38f9f9d83b3fb05cbc3-query-params">
+                    <tr>
+                        <td class="tableblock halign-left valign-top">
+                            <div class='checkbox'><input checked="checked"
+                                                         id="b5621ed61f5fe38f9f9d83b3fb05cbc3-query-txId"
+                                                         name="b5621ed61f5fe38f9f9d83b3fb05cbc3-query-checkbox"
+                                                         type="checkbox"><label
+                                    for="b5621ed61f5fe38f9f9d83b3fb05cbc3-query-txId"></label></div>
+                        </td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">txId</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock"><input name="txId"
+                                                                                                   type="text"
+                                                                                                   value="979f029c-555a-4f9e-9e8c-c4123390ba03"/>
+                        </p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">UUID</p></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="paragraph"><p><strong>Response-fields:</strong></p></div>
+                <table class="tableblock frame-all grid-all spread">
+                    <colgroup>
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th class="tableblock halign-left valign-top">Field</th>
+                        <th class="tableblock halign-left valign-top">Type</th>
+                        <th class="tableblock halign-left valign-top">Description</th>
+                        <th class="tableblock halign-left valign-top">Since</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">code</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">int32</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">状态码</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">message</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">状态描述</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">data</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">object</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">返回的数据</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="paragraph">
+                    <p><strong>
+                        <button class="send-button" data-id="b5621ed61f5fe38f9f9d83b3fb05cbc3">Send Request</button>
+                    </strong><span id="b5621ed61f5fe38f9f9d83b3fb05cbc3-resp-status"></span></p>
+                </div>
+                <div class="paragraph"><p><strong>Response-example:</strong></p></div>
+                <div class="listingblock">
+                    <div class="content" id="b5621ed61f5fe38f9f9d83b3fb05cbc3-response"><pre><code class="json">{
+  "code": 753,
+  "message": "success",
+  "data": {
+    "waring": "You may have used non-display generics."
+  }
+}</code></pre>
+                    </div>
+                </div>
+                <div class="paragraph"><p><strong>Curl-example:</strong></p></div>
+                <div class="listingblock">
+                    <div class="content" id="b5621ed61f5fe38f9f9d83b3fb05cbc3-curl">
+                        <pre><code class="bash">curl -X GET -i http://localhost:8080/[buyerTx]/[pay]?txId=4437e1e0-2d78-4385-83c4-38ccdd5c58e9</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="sect2"><h3 id="_6_10_下载K2"><a class="anchor" href="#_6_10_下载K2"></a><a class="link"
+                                                                                               href="#_6_10_下载K2">6.10.&nbsp;下载K2</a>
+            </h3>
+                <div class="paragraph" data-download="false" data-page=""
+                     data-url="http://localhost:8080/[buyerTx]/[getK2]" id="58cdd94fc09f52bc24a15b2adff7b5b5-url"><p>
+                    <strong>URL:</strong><a class="bare" href="http://localhost:8080/[buyerTx]/[getK2]">&nbsp;http://localhost:8080/[buyerTx]/[getK2]</a>
+                </p></div>
+                <div class="paragraph" data-method="GET" id="58cdd94fc09f52bc24a15b2adff7b5b5-method"><p>
+                    <strong>Type:</strong>&nbsp;GET</p></div>
+                <div class="paragraph"><p><strong>Author:</strong>&nbsp;zhouxv 2021/7/24.</p></div>
+                <div class="paragraph" data-content-type="application/x-www-form-urlencoded;charset=utf-8"
+                     id="58cdd94fc09f52bc24a15b2adff7b5b5-content-type"><p><strong>Content-Type:</strong>&nbsp;application/x-www-form-urlencoded;charset=utf-8
+                </p></div>
+                <div class="paragraph"><p><strong>Description:</strong>&nbsp;买家在卖家上传K2后，下载K2</p></div>
+                <div class="paragraph"><p><strong>Query-parameters:</strong></p></div>
+                <table class="tableblock frame-all grid-all spread">
+                    <colgroup>
+                        <col style="width: 5%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th class="tableblock halign-left valign-top">
+                            <div class='checkbox'><input checked="checked" class="check-all"
+                                                         id="58cdd94fc09f52bc24a15b2adff7b5b5-query-checkbox"
+                                                         name="58cdd94fc09f52bc24a15b2adff7b5b5-query-checkbox"
+                                                         type="checkbox"><label
+                                    for="58cdd94fc09f52bc24a15b2adff7b5b5-query-checkbox"></label></div>
+                        </th>
+                        <th class="tableblock halign-left valign-top">Parameter</th>
+                        <th class="tableblock halign-left valign-top">Value</th>
+                        <th class="tableblock halign-left valign-top">Type</th>
+                        <th class="tableblock halign-left valign-top">Required</th>
+                        <th class="tableblock halign-left valign-top">Description</th>
+                    </tr>
+                    </thead>
+                    <tbody id="58cdd94fc09f52bc24a15b2adff7b5b5-query-params">
+                    <tr>
+                        <td class="tableblock halign-left valign-top">
+                            <div class='checkbox'><input checked="checked"
+                                                         id="58cdd94fc09f52bc24a15b2adff7b5b5-query-txId"
+                                                         name="58cdd94fc09f52bc24a15b2adff7b5b5-query-checkbox"
+                                                         type="checkbox"><label
+                                    for="58cdd94fc09f52bc24a15b2adff7b5b5-query-txId"></label></div>
+                        </td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">txId</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock"><input name="txId"
+                                                                                                   type="text"
+                                                                                                   value="0f94c497-93b3-40ab-b1b3-abdf288541b8"/>
+                        </p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">UUID</p></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="paragraph"><p><strong>Response-fields:</strong></p></div>
+                <table class="tableblock frame-all grid-all spread">
+                    <colgroup>
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th class="tableblock halign-left valign-top">Field</th>
+                        <th class="tableblock halign-left valign-top">Type</th>
+                        <th class="tableblock halign-left valign-top">Description</th>
+                        <th class="tableblock halign-left valign-top">Since</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">code</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">int32</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">状态码</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">message</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">状态描述</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">data</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">object</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">返回的数据</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="paragraph">
+                    <p><strong>
+                        <button class="send-button" data-id="58cdd94fc09f52bc24a15b2adff7b5b5">Send Request</button>
+                    </strong><span id="58cdd94fc09f52bc24a15b2adff7b5b5-resp-status"></span></p>
+                </div>
+                <div class="paragraph"><p><strong>Response-example:</strong></p></div>
+                <div class="listingblock">
+                    <div class="content" id="58cdd94fc09f52bc24a15b2adff7b5b5-response"><pre><code class="json">{
+  "code": 517,
+  "message": "success",
+  "data": {
+    "waring": "You may have used non-display generics."
+  }
+}</code></pre>
+                    </div>
+                </div>
+                <div class="paragraph"><p><strong>Curl-example:</strong></p></div>
+                <div class="listingblock">
+                    <div class="content" id="58cdd94fc09f52bc24a15b2adff7b5b5-curl">
+                        <pre><code class="bash">curl -X GET -i http://localhost:8080/[buyerTx]/[getK2]?txId=933eb72c-4119-48be-ba44-505e4369bb2f</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="sect2"><h3 id="_6_11_订单确认"><a class="anchor" href="#_6_11_订单确认"></a><a class="link"
+                                                                                               href="#_6_11_订单确认">6.11.&nbsp;订单确认</a>
+            </h3>
+                <div class="paragraph" data-download="false" data-page=""
+                     data-url="http://localhost:8080/[buyerTx]/[confirm]" id="b8b6e613ab18e49efcad09e0a2ffe77d-url"><p>
+                    <strong>URL:</strong><a class="bare" href="http://localhost:8080/[buyerTx]/[confirm]">&nbsp;http://localhost:8080/[buyerTx]/[confirm]</a>
+                </p></div>
+                <div class="paragraph" data-method="GET" id="b8b6e613ab18e49efcad09e0a2ffe77d-method"><p>
+                    <strong>Type:</strong>&nbsp;GET</p></div>
+                <div class="paragraph"><p><strong>Author:</strong>&nbsp;zhouxv 2021/7/24.</p></div>
+                <div class="paragraph" data-content-type="application/x-www-form-urlencoded;charset=utf-8"
+                     id="b8b6e613ab18e49efcad09e0a2ffe77d-content-type"><p><strong>Content-Type:</strong>&nbsp;application/x-www-form-urlencoded;charset=utf-8
+                </p></div>
+                <div class="paragraph"><p><strong>Description:</strong>&nbsp;买家拿到K2，解密后调用此接口</p></div>
+                <div class="paragraph"><p><strong>Query-parameters:</strong></p></div>
+                <table class="tableblock frame-all grid-all spread">
+                    <colgroup>
+                        <col style="width: 5%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                        <col style="width: 19%;">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th class="tableblock halign-left valign-top">
+                            <div class='checkbox'><input checked="checked" class="check-all"
+                                                         id="b8b6e613ab18e49efcad09e0a2ffe77d-query-checkbox"
+                                                         name="b8b6e613ab18e49efcad09e0a2ffe77d-query-checkbox"
+                                                         type="checkbox"><label
+                                    for="b8b6e613ab18e49efcad09e0a2ffe77d-query-checkbox"></label></div>
+                        </th>
+                        <th class="tableblock halign-left valign-top">Parameter</th>
+                        <th class="tableblock halign-left valign-top">Value</th>
+                        <th class="tableblock halign-left valign-top">Type</th>
+                        <th class="tableblock halign-left valign-top">Required</th>
+                        <th class="tableblock halign-left valign-top">Description</th>
+                    </tr>
+                    </thead>
+                    <tbody id="b8b6e613ab18e49efcad09e0a2ffe77d-query-params">
+                    <tr>
+                        <td class="tableblock halign-left valign-top">
+                            <div class='checkbox'><input checked="checked"
+                                                         id="b8b6e613ab18e49efcad09e0a2ffe77d-query-txId"
+                                                         name="b8b6e613ab18e49efcad09e0a2ffe77d-query-checkbox"
+                                                         type="checkbox"><label
+                                    for="b8b6e613ab18e49efcad09e0a2ffe77d-query-txId"></label></div>
+                        </td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">txId</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock"><input name="txId"
+                                                                                                   type="text"
+                                                                                                   value="06c15c1b-b30f-4c29-b5af-68719ea080cd"/>
+                        </p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">UUID</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top">
+                            <div class='checkbox'><input checked="checked"
+                                                         id="b8b6e613ab18e49efcad09e0a2ffe77d-query-bool"
+                                                         name="b8b6e613ab18e49efcad09e0a2ffe77d-query-checkbox"
+                                                         type="checkbox"><label
+                                    for="b8b6e613ab18e49efcad09e0a2ffe77d-query-bool"></label></div>
+                        </td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock"><input name="bool"
+                                                                                                   type="text"
+                                                                                                   value="true"/></p>
+                        </td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="paragraph"><p><strong>Response-fields:</strong></p></div>
+                <table class="tableblock frame-all grid-all spread">
+                    <colgroup>
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th class="tableblock halign-left valign-top">Field</th>
+                        <th class="tableblock halign-left valign-top">Type</th>
+                        <th class="tableblock halign-left valign-top">Description</th>
+                        <th class="tableblock halign-left valign-top">Since</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">code</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">int32</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">状态码</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">message</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">状态描述</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">data</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">object</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">返回的数据</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="paragraph">
+                    <p><strong>
+                        <button class="send-button" data-id="b8b6e613ab18e49efcad09e0a2ffe77d">Send Request</button>
+                    </strong><span id="b8b6e613ab18e49efcad09e0a2ffe77d-resp-status"></span></p>
+                </div>
+                <div class="paragraph"><p><strong>Response-example:</strong></p></div>
+                <div class="listingblock">
+                    <div class="content" id="b8b6e613ab18e49efcad09e0a2ffe77d-response"><pre><code class="json">{
+  "code": 37,
+  "message": "success",
+  "data": {
+    "waring": "You may have used non-display generics."
+  }
+}</code></pre>
+                    </div>
+                </div>
+                <div class="paragraph"><p><strong>Curl-example:</strong></p></div>
+                <div class="listingblock">
+                    <div class="content" id="b8b6e613ab18e49efcad09e0a2ffe77d-curl">
+                        <pre><code class="bash">curl -X GET -i http://localhost:8080/[buyerTx]/[confirm]?bool=true&txId=3a1eb28b-f6a2-4274-b621-19b614bd1f85</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="page-footer"><span class="copyright">Generated by smart-doc at 2021-08-30 23:56:14</span><span
+            class="footer-modification">Suggestions,contact,support and error reporting on<a
+            href="https://gitee.com/smart-doc-team/smart-doc" target="_blank">&nbsp;Gitee</a>&nbsp;or<a
+            href="https://github.com/smart-doc-group/smart-doc.git" target="_blank">&nbsp;Github</a></span></footer>
+</div>
+<script src="debug.js?v=1630338974375"></script>
+<script src="search.js?v=1630338974375"></script>
+</body>
+</html>

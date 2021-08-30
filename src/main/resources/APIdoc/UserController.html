@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="smart-doc" name="generator">
+    <title>清雁 QinYan</title>
+    <link href="https://fonts.googleapis.cnpmjs.org/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"
+          rel="stylesheet">
+    <link href="AllInOne.css?v=1630338974375" rel="stylesheet"/>
+    <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.3.2/styles/xt256.min.css" rel="stylesheet">
+    <style>        .literalblock pre, .listingblock pre:not(.highlight), .listingblock pre[class="highlight"], .listingblock pre[class^="highlight "], .listingblock pre.CodeRay, .listingblock pre.prettyprint {
+        background: #000;
+    }
+
+    .hljs {
+        padding: 0em;
+    }</style>
+    <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.3.2/highlight.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+</head>
+<body class="book toc2 toc-left">
+<div id="header"><h1>清雁 QinYan</h1>
+    <div class="toc2" id="toc">
+        <div id="book-search-input"><input id="search" placeholder="Type to search" type="text"></div>
+        <div id="toctitle"><span>API Reference</span></div>
+        <ul class="sectlevel1" id="accordion">
+            <li class=""><a class="dd" href="debug.html#header">1.&nbsp;买家售后 controller.</a>
+                <ul class="sectlevel2" style="display: none">
+                    <li><a href="debug.html#_1_1_买家发起仲裁">1.1.&nbsp;买家发起仲裁</a></li>
+                    <li><a href="debug.html#_1_2_检索所有的仲裁请求">1.2.&nbsp;检索所有的仲裁请求</a></li>
+                </ul>
+            </li>
+            <li class=""><a class="dd" href="sellerAftermarket.html#header">2.&nbsp;卖家售后 controller.</a>
+                <ul class="sectlevel2" style="display: none">
+                    <li><a href="sellerAftermarket.html#_2_1_检索所有的仲裁请求">2.1.&nbsp;检索所有的仲裁请求</a></li>
+                    <li><a href="sellerAftermarket.html#_2_2_卖家仲裁确认">2.2.&nbsp;卖家仲裁确认</a></li>
+                </ul>
+            </li>
+            <li class=""><a class="dd" href="DataSetManagement.html#header">3.&nbsp;用户数据集管理 controller.</a>
+                <ul class="sectlevel2" style="display: none">
+                    <li><a href="DataSetManagement.html#_3_1_数据集所有权声明接口">3.1.&nbsp;数据集所有权声明接口</a></li>
+                    <li><a href="DataSetManagement.html#_3_2_根据传入的字段检索数据集">3.2.&nbsp;根据传入的字段检索数据集</a></li>
+                </ul>
+            </li>
+            <li class=""><a class="dd" href="GoodsManagement.html#header">4.&nbsp;商品管理 controller.</a>
+                <ul class="sectlevel2" style="display: none">
+                    <li><a href="GoodsManagement.html#_4_1_卖家上架某数据集">4.1.&nbsp;卖家上架某数据集</a></li>
+                    <li><a href="GoodsManagement.html#_4_2_商品检索">4.2.&nbsp;商品检索</a></li>
+                    <li><a href="GoodsManagement.html#_4_3_卖家更新商品信息">4.3.&nbsp;卖家更新商品信息</a></li>
+                    <li><a href="GoodsManagement.html#_4_4_删除商品，下架商品">4.4.&nbsp;删除商品，下架商品</a></li>
+                </ul>
+            </li>
+            <li class=""><a class="dd" href="ShopController.html#header">5.&nbsp;商城浏览 controller.</a>
+                <ul class="sectlevel2" style="display: none">
+                    <li><a href="ShopController.html#_5_1_商城浏览">5.1.&nbsp;商城浏览</a></li>
+                    <li><a href="ShopController.html#_5_2_查询具体的商品信息">5.2.&nbsp;查询具体的商品信息</a></li>
+                </ul>
+            </li>
+            <li class=""><a class="dd" href="BuyerTx.html#header">6.&nbsp;买家交易 controller.</a>
+                <ul class="sectlevel2" style="display: none">
+                    <li><a href="BuyerTx.html#_6_1_买家开始协商">6.1.&nbsp;买家开始协商</a></li>
+                    <li><a href="BuyerTx.html#_6_2_检索所有的协商请求">6.2.&nbsp;检索所有的协商请求</a></li>
+                    <li><a href="BuyerTx.html#_6_3_买家拿到outerKey">6.3.&nbsp;买家拿到outerKey</a></li>
+                    <li><a href="BuyerTx.html#_6_4_确认outerKey">6.4.&nbsp;确认outerKey</a></li>
+                    <li><a href="BuyerTx.html#_6_5_下载数据集密文包">6.5.&nbsp;下载数据集密文包</a></li>
+                    <li><a href="BuyerTx.html#_6_6_买家确认数据集密文">6.6.&nbsp;买家确认数据集密文</a></li>
+                    <li><a href="BuyerTx.html#_6_7_下载sample数据集">6.7.&nbsp;下载sample数据集</a></li>
+                    <li><a href="BuyerTx.html#_6_8_买家决定交易是否继续进行">6.8.&nbsp;买家决定交易是否继续进行</a></li>
+                    <li><a href="BuyerTx.html#_6_9_买家支付完成调用此接口">6.9.&nbsp;买家支付完成调用此接口</a></li>
+                    <li><a href="BuyerTx.html#_6_10_下载K2">6.10.&nbsp;下载K2</a></li>
+                    <li><a href="BuyerTx.html#_6_11_订单确认">6.11.&nbsp;订单确认</a></li>
+                </ul>
+            </li>
+            <li class=""><a class="dd" href="SellerTx.html#header">7.&nbsp;卖家交易 controller.</a>
+                <ul class="sectlevel2" style="display: none">
+                    <li><a href="SellerTx.html#_7_1_卖家检索所有的协商请求">7.1.&nbsp;卖家检索所有的协商请求</a></li>
+                    <li><a href="SellerTx.html#_7_2_卖家协商">7.2.&nbsp;卖家协商</a></li>
+                    <li><a href="SellerTx.html#_7_3_卖家上传OuterKey">7.3.&nbsp;卖家上传OuterKey</a></li>
+                    <li><a href="SellerTx.html#_7_4_卖家上传数据集密文包">7.4.&nbsp;卖家上传数据集密文包</a></li>
+                    <li><a href="SellerTx.html#_7_5_卖家上传K2">7.5.&nbsp;卖家上传K2</a></li>
+                </ul>
+            </li>
+            <li class="open"><a class="dd" href="UserController.html#header">8.&nbsp;用户信息模块 controller.</a>
+                <ul class="sectlevel2" style="display: block">
+                    <li><a href="UserController.html#_8_1_用户注册">8.1.&nbsp;用户注册</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<div id="content">
+    <div class="sect1"><h2 id="_用户信息模块 controller."><a class="anchor" href="#_用户信息模块 controller."></a><a class="link"
+                                                                                                         href="#_用户信息模块 controller.">8.&nbsp;用户信息模块
+        controller.</a></h2>
+        <div class="sectionbody">
+            <div class="sect2"><h3 id="_8_1_用户注册"><a class="anchor" href="#_8_1_用户注册"></a><a class="link"
+                                                                                             href="#_8_1_用户注册">8.1.&nbsp;用户注册</a>
+            </h3>
+                <div class="paragraph" data-download="false" data-page=""
+                     data-url="http://localhost:8080/[user]/[register]" id="bc6d2b0628c79eb8002f8b7ee1c84565-url"><p>
+                    <strong>URL:</strong><a class="bare" href="http://localhost:8080/[user]/[register]">&nbsp;http://localhost:8080/[user]/[register]</a>
+                </p></div>
+                <div class="paragraph" data-method="POST" id="bc6d2b0628c79eb8002f8b7ee1c84565-method"><p>
+                    <strong>Type:</strong>&nbsp;POST</p></div>
+                <div class="paragraph"><p><strong>Author:</strong>&nbsp;zhouxv 2021/7/20.</p></div>
+                <div class="paragraph" data-content-type="application/json; charset=utf-8"
+                     id="bc6d2b0628c79eb8002f8b7ee1c84565-content-type"><p><strong>Content-Type:</strong>&nbsp;application/json;
+                    charset=utf-8</p></div>
+                <div class="paragraph"><p><strong>Description:</strong>&nbsp;用户传递公钥，操作成功代表在平台处完成了登记身份</p></div>
+                <div class="paragraph"><p><strong>Body-parameters:</strong></p></div>
+                <table class="tableblock frame-all grid-all spread">
+                    <colgroup>
+                        <col style="width: 20%;">
+                        <col style="width: 20%;">
+                        <col style="width: 20%;">
+                        <col style="width: 20%;">
+                        <col style="width: 20%;">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th class="tableblock halign-left valign-top">Parameter</th>
+                        <th class="tableblock halign-left valign-top">Type</th>
+                        <th class="tableblock halign-left valign-top">Required</th>
+                        <th class="tableblock halign-left valign-top">Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">userName</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">用户名称</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">PK</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">用户公钥</p></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="paragraph"><p><strong>Request-body:</strong></p></div>
+                <div class="listingblock">
+                    <div class="content"><pre><code contenteditable="plaintext-only"
+                                                    id="bc6d2b0628c79eb8002f8b7ee1c84565-body">{
+  "userName": "tod.johnson",
+  "PK": "a52gnx"
+}</code></pre>
+                    </div>
+                </div>
+                <div class="paragraph"><p><strong>Response-fields:</strong></p></div>
+                <table class="tableblock frame-all grid-all spread">
+                    <colgroup>
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th class="tableblock halign-left valign-top">Field</th>
+                        <th class="tableblock halign-left valign-top">Type</th>
+                        <th class="tableblock halign-left valign-top">Description</th>
+                        <th class="tableblock halign-left valign-top">Since</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">code</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">int32</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">状态码</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">message</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">状态描述</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">data</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">object</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">返回的数据</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="paragraph">
+                    <p><strong>
+                        <button class="send-button" data-id="bc6d2b0628c79eb8002f8b7ee1c84565">Send Request</button>
+                    </strong><span id="bc6d2b0628c79eb8002f8b7ee1c84565-resp-status"></span></p>
+                </div>
+                <div class="paragraph"><p><strong>Response-example:</strong></p></div>
+                <div class="listingblock">
+                    <div class="content" id="bc6d2b0628c79eb8002f8b7ee1c84565-response"><pre><code class="json">{
+  "code": 558,
+  "message": "success",
+  "data": {
+    "waring": "You may have used non-display generics."
+  }
+}</code></pre>
+                    </div>
+                </div>
+                <div class="paragraph"><p><strong>Curl-example:</strong></p></div>
+                <div class="listingblock">
+                    <div class="content" id="bc6d2b0628c79eb8002f8b7ee1c84565-curl"><pre><code class="bash">curl -X POST -H 'Content-Type: application/json; charset=utf-8' -i http://localhost:8080/[user]/[register] --data '{
+  "userName": "tod.johnson",
+  "PK": "a52gnx"
+}'</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="page-footer"><span class="copyright">Generated by smart-doc at 2021-08-30 23:56:14</span><span
+            class="footer-modification">Suggestions,contact,support and error reporting on<a
+            href="https://gitee.com/smart-doc-team/smart-doc" target="_blank">&nbsp;Gitee</a>&nbsp;or<a
+            href="https://github.com/smart-doc-group/smart-doc.git" target="_blank">&nbsp;Github</a></span></footer>
+</div>
+<script src="debug.js?v=1630338974375"></script>
+<script src="search.js?v=1630338974375"></script>
+</body>
+</html>
