@@ -44,7 +44,6 @@ public class UserController {
     })
     public ResponseBody register(@RequestBody UserDTO userDTO) {
         User user = userDTO.toUser();
-
         if (this.userService.createUser(user)) {
             log.info("注册成功，userId为 " + user.getUserid());
             return ResponseBody.ok("注册成功", user);

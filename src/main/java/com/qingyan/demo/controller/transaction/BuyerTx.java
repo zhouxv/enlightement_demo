@@ -115,7 +115,7 @@ public class BuyerTx {
     public ResponseBody getOuterKey(@RequestParam UUID txId) {
         Transaction tx = this.transactionService.findTransactionById(txId.toString());
 
-        if (tx == null || tx.getStatus() != 2) {
+        if (tx == null || tx.getStatus() != 4) {
             log.info("非法操作，订单状态异常");
             return ResponseBody.fail("非法操作，订单状态异常");
         }
@@ -281,7 +281,7 @@ public class BuyerTx {
     })
     public ResponseBody pay(@RequestParam UUID txId) {
         Transaction tx = this.transactionService.findTransactionById(txId.toString());
-        if (tx == null || tx.getStatus() != 10) {
+        if (tx == null || tx.getStatus() != 9) {
             log.info("非法操作，订单状态错误");
             return ResponseBody.fail("非法操作，订单状态错误");
         }

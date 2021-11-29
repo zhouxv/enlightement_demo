@@ -64,7 +64,7 @@ public class sellerAftermarket {
         Aftermarket aftermarket = this.aftermarketService.findAftermarketById(aftermarketId.toString());
 
 
-        if (aftermarket == null || aftermarket.getReturnstatus() != 1 || aftermarket.getReturnstatus() != 3) {
+        if (aftermarket == null || aftermarket.getReturnstatus() != 1) {
             log.info("非法操作，售后状态非法");
             return ResponseBody.fail("非法操作，售后状态非法");
         }

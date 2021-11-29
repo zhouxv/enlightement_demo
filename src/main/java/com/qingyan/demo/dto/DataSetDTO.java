@@ -54,7 +54,7 @@ public class DataSetDTO {
 
     public static DataSet toGetDataSet(UUID datasetId, UUID userId) {
         DataSet dataSet = new DataSet();
-        if (dataSet != null)
+        if (datasetId != null)
             dataSet.setDatasetid(datasetId.toString());
         if (userId != null)
             dataSet.setSellerid(userId.toString());
