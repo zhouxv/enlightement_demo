@@ -52,7 +52,7 @@ public class BuyerTx {
      * 买家开始协商
      *
      * @param negotiateDTO 协商信息DTO
-     * @return
+     * @return 无
      * @apiNote 买家点击交易按钮，进入协商页面，点击提交，调用此接口
      */
     @ApiOperation(value = "买家开始协商", notes = "买家点击交易按钮，进入协商页面，点击提交，调用此接口")
@@ -87,7 +87,7 @@ public class BuyerTx {
      * 检索所有的协商请求
      *
      * @param buyerId UUID
-     * @return
+     * @return 无
      * @apiNote 买家传递自己的公钥，检索所有的协商
      */
     @PostMapping({"getAllTX"})
@@ -104,7 +104,7 @@ public class BuyerTx {
      * 买家拿到outerKey
      *
      * @param txId UUID
-     * @return
+     * @return 无
      * @apiNote 买家拿到卖家上传的outerKey
      */
     @GetMapping({"getOuterKey"})
@@ -138,7 +138,7 @@ public class BuyerTx {
      * 确认outerKey
      *
      * @param outerKeyDTO OuterKeyDTO
-     * @return
+     * @return 无
      * @apiNote 买家提交对称密钥的哈希和签名
      */
     @PostMapping({"verifyOuterKey"})
@@ -169,7 +169,6 @@ public class BuyerTx {
      * 下载数据集密文包
      *
      * @param txId UUID
-     * @return
      * @apiNote 买家下载数据集的密文包
      */
     @GetMapping({"downloadDataSetCipher"})
@@ -187,7 +186,7 @@ public class BuyerTx {
      * 买家确认数据集密文
      *
      * @param dataSetCipherDTO DataSetCipherDTO
-     * @return
+     * @return 无
      * @apiNote 买家传递收到的密文包的哈希和签名
      */
     @PostMapping({"verifyDataSetCipher"})
@@ -212,7 +211,6 @@ public class BuyerTx {
      * 下载sample数据集
      *
      * @param txId UUID
-     * @return
      * @apiNote 买家下载sample数据集
      */
     @GetMapping({"downloadSample"})
@@ -230,7 +228,7 @@ public class BuyerTx {
      *
      * @param txId UUID
      * @param bool boolean
-     * @return
+     * @return 无
      * @apiNote 买家查看样本数据后，决定是否继续进行交易
      */
     @GetMapping({"decision"})
@@ -271,7 +269,7 @@ public class BuyerTx {
      * 买家支付完成调用此接口
      *
      * @param txId UUID
-     * @return
+     * @return 无
      * @apiNote 买家支付完成调用此接口
      */
     @GetMapping({"pay"})
@@ -300,7 +298,7 @@ public class BuyerTx {
      * 下载K2
      *
      * @param txId UUID
-     * @return
+     * @return 无
      * @apiNote 买家在卖家上传K2后，下载K2
      */
     @GetMapping({"getK2"})
@@ -322,7 +320,7 @@ public class BuyerTx {
      *
      * @param txId UUID
      * @param bool boolean
-     * @return
+     * @return 无
      * @apiNote 买家拿到K2，解密后调用此接口
      */
     @GetMapping({"confirm"})
@@ -396,5 +394,4 @@ public class BuyerTx {
             ex.printStackTrace();
         }
     }
-
 }

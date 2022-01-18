@@ -1,8 +1,9 @@
 package com.qingyan.demo.service.otherservice.serviceImp;
 
 import com.qingyan.demo.service.otherservice.FileService;
+import com.sun.istack.internal.NotNull;
+import org.springframework.boot.system.ApplicationHome;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ClassUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
@@ -48,7 +49,8 @@ public class FileServiceImp implements FileService {
 
     @Override
     public File getSampleFile(String fileName) {
-        String rootPath = ClassUtils.getDefaultClassLoader().getResource("").getPath() + "uploadFile/sampleDataSet";
+        ApplicationHome applicationHome = new ApplicationHome(getClass());
+        String rootPath = applicationHome.getSource().getParentFile().getAbsolutePath() + "/uploadFile/sampleDataSet";
         File rootFile = new File(rootPath);
 
         File[] files = rootFile.listFiles();
@@ -61,7 +63,8 @@ public class FileServiceImp implements FileService {
 
     @Override
     public File getDataCipherFile(String fileName) {
-        String rootPath = ClassUtils.getDefaultClassLoader().getResource("").getPath() + "uploadFile/dataSetCipher";
+        ApplicationHome applicationHome = new ApplicationHome(getClass());
+        String rootPath = applicationHome.getSource().getParentFile().getAbsolutePath() + "/uploadFile/dataSetCipher";
         File rootFile = new File(rootPath);
 
         File[] files = rootFile.listFiles();
@@ -74,7 +77,7 @@ public class FileServiceImp implements FileService {
 
     // 上传的文件必须有后缀名,否则改方法接收不到
     @Override
-    public Boolean uploadSampleData(MultipartFile file, String fileName) throws Exception {
+    public Boolean uploadSampleData(@NotNull MultipartFile file, String fileName) throws Exception {
         if (file.isEmpty()) {
             return false;
         }
@@ -84,7 +87,14 @@ public class FileServiceImp implements FileService {
         String sampleFileName = fileName + suffixOfFile(file.getOriginalFilename());
 
         //2.指定样本数据集存储的绝对路径,不存在则创建
-        String parentFilePath = ClassUtils.getDefaultClassLoader().getResource("").getPath() + "uploadFile/sampleDataSet";
+        //获取jar包发布的路径，取到的路径带.jar需要处理
+        ApplicationHome applicationHome = new ApplicationHome(getClass());
+        File source = applicationHome.getSource();
+        String parentFilePath = source.getParentFile().getAbsolutePath() + "/uploadFile/sampleDataSet";
+
+        //window上运行
+        //String parentFilePath = ClassUtils.getDefaultClassLoader().getResource("").getPath() + "uploadFile/sampleDataSet";
+
         File parentFile = new File(parentFilePath);
         if (!parentFile.exists()) {
             parentFile.mkdirs();
@@ -99,7 +109,7 @@ public class FileServiceImp implements FileService {
     }
 
     @Override
-    public Boolean uploadDataSetCipher(MultipartFile file, String fileName) throws Exception {
+    public Boolean uploadDataSetCipher(@NotNull MultipartFile file, String fileName) throws Exception {
         if (file.isEmpty()) {
             return false;
         }
@@ -108,7 +118,13 @@ public class FileServiceImp implements FileService {
         String sampleFileName = fileName + suffixOfFile(file.getOriginalFilename());
 
         //2.指定样本数据集存储的绝对路径,不存在则创建
-        String parentFilePath = ClassUtils.getDefaultClassLoader().getResource("").getPath() + "uploadFile/dataSetCipher";
+
+        ApplicationHome applicationHome = new ApplicationHome(getClass());
+        File source = applicationHome.getSource();
+        String parentFilePath = source.getParentFile().getAbsolutePath() + "/uploadFile/dataSetCipher";
+
+        //window上运行
+        //String parentFilePath = ClassUtils.getDefaultClassLoader().getResource("").getPath() + "uploadFile/dataSetCipher";
 
         File parentFile = new File(parentFilePath);
         if (!parentFile.exists()) {
